@@ -10,9 +10,6 @@ public class UnitingWorlds {
     private Player PLAYER;
     private PlayerClassCreater playerClassCreater;
 
-    public UnitingWorlds() {
-    }
-
     public void startGame() throws Exception {
         PLAYER = new Player();
         playerClassCreater = new PlayerClassCreater();
@@ -22,9 +19,10 @@ public class UnitingWorlds {
 
     private void createPlayer(Player player) throws Exception {
         boolean nameChosen = false;
-        boolean classChosen;
+        boolean classChosen = false;
 
-        Scanner sc = new Scanner(System.in);
+        final Scanner sc = new Scanner(System.in);
+
         System.out.println("Welcome to the World of [Uniting Worlds] \n What's your name?");
         do {
             player.setPlayerName(sc.next());
@@ -36,6 +34,7 @@ public class UnitingWorlds {
                 System.out.println("Repeat your Name!");
             }
         } while (!nameChosen);
+
         System.out.println("So, {" + player.getPlayerName() + "}, which class do you want to play?");
         do {
             System.out.println("Press the number in [] to choose your class: \n [1] Warrior \n [2] Ranger \n [3] Mage");
