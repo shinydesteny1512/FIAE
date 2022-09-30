@@ -37,36 +37,57 @@ public class UnitingWorlds {
 
         System.out.println("So, {" + player.getPlayerName() + "}, which class do you want to play?");
         do {
-            System.out.println("Press the number in [] to choose your class: \n [1] Warrior \n [2] Ranger \n [3] Mage");
+            System.out.println("""
+                    Press the number in [] to choose your class:\s
+                     [1] Warrior
+                     [2] Ranger
+                     [3] Mage
+                     [4] Barbarian
+                     [5] Priest""");
             String classAccepted = sc.next();
-            classChosen = setPLAYERClass(player, classAccepted);
+            setPLAYERClass(player, classAccepted);
             player.initializeHealth();
             player.initializeMana();
+
+            System.out.println("Are you sure about your choice?");
+            String playerClassAccepted = sc.next();
+            if (playerClassAccepted.equals("yes") || playerClassAccepted.equals("y")) {
+                classChosen = true;
+            } else {
+                System.out.println("Choose again!");
+            }
 
         } while (!classChosen);
     }
 
-    private boolean setPLAYERClass(Player player, String choice) {
-        boolean chosen = false;
-        if (choice.equals("1") || choice.equals("!")) {
-            System.out.println("You have chosen Warrior! RAWRRRR");
-            chosen = true;
-            player.setMyClass(playerClassCreater.createWarrior());
-
-        } else if (choice.equals("2")) {
-            System.out.println("You have chosen Ranger! PEW PEW PEW");
-            chosen = true;
-            player.setMyClass(playerClassCreater.createRanger());
-
-        } else if (choice.equals("3") || choice.equals("§")) {
-            System.out.println("You have chosen Mage! PSHIIIIIEAUUU");
-            chosen = true;
-            player.setMyClass(playerClassCreater.createMage());
-
-        } else {
-            System.out.println("Wrong Input, try again");
+    private void setPLAYERClass(Player player, String choice) {
+        switch (choice) {
+            case "1", "!" -> {
+                System.out.println("You have chosen Warrior! AHU");
+                player.setMyClass(playerClassCreater.createWarrior());
+            }
+            case "2" -> {
+                System.out.println("You have chosen Ranger! PEW PEW PEW");
+                player.setMyClass(playerClassCreater.createRanger());
+            }
+            case "3", "§" -> {
+                System.out.println("You have chosen Mage! PSHIIIIIEAUUU");
+                player.setMyClass(playerClassCreater.createMage());
+            }
+            case "4", "$" -> {
+                System.out.println("You have chosen Barb! RAWWWWRRR");
+                player.setMyClass(playerClassCreater.createBarb());
+            }
+            case "5", "%" -> {
+                System.out.println("You have chosen Priest! Wushhh");
+                player.setMyClass(playerClassCreater.createPriest());
+            }
+            case "6", "&" -> {
+                System.out.println("You have chosen Rogue! Kling Kling");
+                player.setMyClass(playerClassCreater.createRogue());
+            }
+            default -> System.out.println("Wrong Input, try again");
         }
-        return chosen;
     }
 
 

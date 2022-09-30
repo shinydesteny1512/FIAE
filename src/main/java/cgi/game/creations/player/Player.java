@@ -25,17 +25,12 @@ public class Player {
     }
 
     public void initializeHealth() throws Exception {
-        if (this.myPlayerClass.getAttributeTyp().equals("STRENGTH")) {
-            this.setHealth((double) (getMyClass() != null ? 50 + (getMyClass().getStr() * 35) : 0));
-
-        } else if (this.myPlayerClass.getAttributeTyp().equals("DEXTERITY")) {
-            this.setHealth((double) (getMyClass() != null ? 50 + (getMyClass().getStr() * 25) : 0));
-
-        } else if (this.myPlayerClass.getAttributeTyp().equals("INTELLIGENCE")) {
-            this.setHealth((double) (getMyClass() != null ? 50 + (getMyClass().getStr() * 15) : 0));
-
-        } else {
-            throw new Exception();
+        switch (this.myPlayerClass.getAttributeTyp()) {
+            case "STRENGTH" -> this.setHealth((double) (getMyClass() != null ? 50 + (getMyClass().getStr() * 35) : 0));
+            case "DEXTERITY" -> this.setHealth((double) (getMyClass() != null ? 50 + (getMyClass().getStr() * 25) : 0));
+            case "INTELLIGENCE" ->
+                    this.setHealth((double) (getMyClass() != null ? 50 + (getMyClass().getStr() * 15) : 0));
+            default -> throw new Exception();
         }
     }
 
@@ -48,17 +43,12 @@ public class Player {
     }
 
     public void initializeMana() throws Exception {
-        if (this.myPlayerClass.getAttributeTyp().equals("STRENGTH")) {
-            this.setMana((double) (getMyClass() != null ? 65 + (getMyClass().getInt() * 15) : 0));
-
-        } else if (this.myPlayerClass.getAttributeTyp().equals("DEXTERITY")) {
-            this.setMana((double) (getMyClass() != null ? 65 + (getMyClass().getInt() * 35) : 0));
-
-        } else if (this.myPlayerClass.getAttributeTyp().equals("INTELLIGENCE")) {
-            this.setMana((double) (getMyClass() != null ? 65 + (getMyClass().getInt() * 50) : 0));
-
-        } else {
-            throw new Exception();
+        switch (this.myPlayerClass.getAttributeTyp()) {
+            case "STRENGTH" -> this.setMana((double) (getMyClass() != null ? 65 + (getMyClass().getInt() * 15) : 0));
+            case "DEXTERITY" -> this.setMana((double) (getMyClass() != null ? 65 + (getMyClass().getInt() * 35) : 0));
+            case "INTELLIGENCE" ->
+                    this.setMana((double) (getMyClass() != null ? 65 + (getMyClass().getInt() * 50) : 0));
+            default -> throw new Exception();
         }
     }
 

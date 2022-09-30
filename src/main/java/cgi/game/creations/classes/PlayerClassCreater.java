@@ -34,58 +34,57 @@ public class PlayerClassCreater {
         return dexClass;
     }
 
-    //  -> NOT USED CLASSES RIGHT NOW - JUST "FIXING" INTELLIJ ISSUES
     public IntPlayerClass createPriest() {
         intClass = new IntPlayerClass();
         intClass.setName("Priest");
         intClass.setAttributeTyp(INTELLIGENCE);
         setAttributes(intClass);
-        return null;
+        return intClass;
     }
 
-    public IntPlayerClass createRogue() {
+    public DexPlayerClass createRogue() {
         dexClass = new DexPlayerClass();
         dexClass.setName("Rogue");
         dexClass.setAttributeTyp(DEXTERITY);
         setAttributes(dexClass);
-        return null;
+        return dexClass;
     }
 
-    public IntPlayerClass createBarb() {
+    public StrPlayerClass createBarb() {
         strClass = new StrPlayerClass();
-        strClass.setName("Barb");
+        strClass.setName("Barbarian");
         strClass.setAttributeTyp(STRENGTH);
         setAttributes(strClass);
-        return null;
+        return strClass;
     }
 
     private void setAttributes(PlayerClass playerClass) {
         Random r = new Random();
         int randomNumber = r.nextInt(15) + 6;
         if (playerClass instanceof IntPlayerClass) {
-            System.out.println("IntClass");
             Integer IntelligenceValue = (int) (randomNumber * 0.5);
             Integer DexterityValue = (int) (randomNumber * 0.3);
             Integer StrengthValue = (int) (randomNumber * 0.2);
             playerClass.setInt(IntelligenceValue);
             playerClass.setDex(DexterityValue);
             playerClass.setStr(StrengthValue);
+
         } else if (playerClass instanceof DexPlayerClass) {
-            System.out.println("DexClass");
             Integer IntelligenceValue = (int) (randomNumber * 0.3);
             Integer DexterityValue = (int) (randomNumber * 0.5);
             Integer StrengthValue = (int) (randomNumber * 0.2);
             playerClass.setInt(IntelligenceValue);
             playerClass.setDex(DexterityValue);
             playerClass.setStr(StrengthValue);
+
         } else {
-            System.out.println("StrClass");
             Integer IntelligenceValue = (int) (randomNumber * 0.2);
             Integer DexterityValue = (int) (randomNumber * 0.3);
             Integer StrengthValue = (int) (randomNumber * 0.5);
             playerClass.setInt(IntelligenceValue);
             playerClass.setDex(DexterityValue);
             playerClass.setStr(StrengthValue);
+
         }
     }
 }
