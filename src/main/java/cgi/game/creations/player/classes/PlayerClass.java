@@ -1,18 +1,20 @@
-package cgi.game.creations.classes;
+package cgi.game.creations.player.classes;
 
-public class PlayerClass {
-    private String name;
+import cgi.game.creations.player.Player;
+
+public abstract class PlayerClass extends Player {
+    private String playerClassName;
     private String attributeTyp;
     private Integer str;
     private Integer dex;
     private Integer Int;
 
-    public String getName() {
-        return name;
+    public String getPlayerClassName() {
+        return playerClassName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPlayerClassName(String playerClassName) {
+        this.playerClassName = playerClassName;
     }
 
     public String getAttributeTyp() {

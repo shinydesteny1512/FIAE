@@ -1,18 +1,21 @@
-package cgi.game.controller;
+package cgi.game.instance;
 
-import cgi.game.creations.classes.PlayerClassCreater;
+import cgi.game.creations.player.classes.DexPlayerClass;
+import cgi.game.creations.player.classes.IntPlayerClass;
+import cgi.game.creations.player.classes.PlayerClassFactory;
+import cgi.game.creations.player.classes.StrPlayerClass;
 import cgi.game.creations.player.Player;
 
 import java.util.Scanner;
 
-public class UnitingWorlds {
+public class Menu {
 
     private Player PLAYER;
-    private PlayerClassCreater playerClassCreater;
+    private PlayerClassFactory playerClassFactory;
 
     public void startGame() throws Exception {
         PLAYER = new Player();
-        playerClassCreater = new PlayerClassCreater();
+        playerClassFactory = new PlayerClassFactory();
         createPlayer(PLAYER);
         debugPlayer();
     }
@@ -25,8 +28,8 @@ public class UnitingWorlds {
 
         System.out.println("Welcome to the World of [Uniting Worlds] \n What's your name?");
         do {
-            player.setPlayerName(sc.next());
-            System.out.println("So your name is {" + player.getPlayerName() + "}? Are you sure about that?");
+            player.setName(sc.next());
+            System.out.println("So your name is {" + player.getName() + "}? Are you sure about that?");
             String playerNameAccepted = sc.next();
             if (playerNameAccepted.equals("yes") || playerNameAccepted.equals("y")) {
                 nameChosen = true;
@@ -35,7 +38,7 @@ public class UnitingWorlds {
             }
         } while (!nameChosen);
 
-        System.out.println("So, {" + player.getPlayerName() + "}, which class do you want to play?");
+        System.out.println("So, {" + player.getName() + "}, which class do you want to play?");
         do {
             System.out.println("""
                     Press the number in [] to choose your class:\s
@@ -43,11 +46,13 @@ public class UnitingWorlds {
                      [2] Ranger
                      [3] Mage
                      [4] Barbarian
-                     [5] Priest""");
+                     [5] Priest
+                     [6] Rogue""");
             String classAccepted = sc.next();
             setPLAYERClass(player, classAccepted);
             player.initializeHealth();
             player.initializeMana();
+            player.initializeInitiative();
 
             System.out.println("Are you sure about your choice?");
             String playerClassAccepted = sc.next();
@@ -64,27 +69,27 @@ public class UnitingWorlds {
         switch (choice) {
             case "1", "!" -> {
                 System.out.println("You have chosen Warrior! AHU");
-                player.setMyClass(playerClassCreater.createWarrior());
+                player.setMyClass(playerClassFactory.createWarrior());
             }
             case "2" -> {
                 System.out.println("You have chosen Ranger! PEW PEW PEW");
-                player.setMyClass(playerClassCreater.createRanger());
+                player.setMyClass(playerClassFactory.createRanger());
             }
             case "3", "§" -> {
                 System.out.println("You have chosen Mage! PSHIIIIIEAUUU");
-                player.setMyClass(playerClassCreater.createMage());
+                player.setMyClass(playerClassFactory.createMage());
             }
             case "4", "$" -> {
                 System.out.println("You have chosen Barb! RAWWWWRRR");
-                player.setMyClass(playerClassCreater.createBarb());
+                player.setMyClass(playerClassFactory.createBarbarian());
             }
             case "5", "%" -> {
                 System.out.println("You have chosen Priest! Wushhh");
-                player.setMyClass(playerClassCreater.createPriest());
+                player.setMyClass(playerClassFactory.createPriest());
             }
             case "6", "&" -> {
                 System.out.println("You have chosen Rogue! Kling Kling");
-                player.setMyClass(playerClassCreater.createRogue());
+                player.setMyClass(playerClassFactory.createRogue());
             }
             default -> System.out.println("Wrong Input, try again");
         }
@@ -94,15 +99,24 @@ public class UnitingWorlds {
     private void debugPlayer() {
         System.out.println(
                 "#################################################################################" +
-                        "\n PLAYER NAME:" + PLAYER.getPlayerName() +
+                        "\n PLAYER NAME:" + PLAYER.getName() +
                         "\n PLAYER HEALTH: " + PLAYER.getHealth() +
                         "\n PLAYER MANA: " + PLAYER.getMana() +
-                        "\n PLAYER CLASS: " + PLAYER.getMyClass().getName() +
+                        "\n PLAYER INITIATIVE: " + PLAYER.getInitiative() +
+                        "\n PLAYER INITIATIVE BONUS: " + PLAYER.getInitiativeBonus() +
+                        "\n PLAYER CLASS: " + PLAYER.getMyClass().getPlayerClassName() +
                         "\n PLAYER CLASS ATTRIBUTE TYPE: " + PLAYER.getMyClass().getAttributeTyp() +
                         "\n PLAYER CLASS STRENGTH: " + PLAYER.getMyClass().getStr() +
                         "\n PLAYER CLASS DEXTERITY: " + PLAYER.getMyClass().getDex() +
                         "\n PLAYER CLASS INTELLIGENCE: " + PLAYER.getMyClass().getInt() +
-                        "\n ################################################################################"
-        );
+                        "\n ################################################################################" +
+                        "\n Class Specific Values: ");
+        if (PLAYER.getMyClass() instanceof StrPlayerClass strPlayerClass) {
+            System.out.println("STR CLASS");
+        } else if (PLAYER.getMyClass() instanceof DexPlayerClass dexPlayerClass) {
+            System.out.println("DEX CLASS");
+        } else if (PLAYER.getMyClass() instanceof IntPlayerClass intPlayerClass) {
+            System.out.println("INT CLASS");
+        }
     }
 }

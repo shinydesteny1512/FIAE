@@ -1,8 +1,8 @@
-package cgi.game.creations.classes;
+package cgi.game.creations.player.classes;
 
 import java.util.Random;
 
-public class PlayerClassCreater {
+public class PlayerClassFactory {
     private IntPlayerClass intClass;
     private StrPlayerClass strClass;
     private DexPlayerClass dexClass;
@@ -12,7 +12,7 @@ public class PlayerClassCreater {
 
     public IntPlayerClass createMage() {
         intClass = new IntPlayerClass();
-        intClass.setName("Mage");
+        intClass.setPlayerClassName("Mage");
         intClass.setAttributeTyp(INTELLIGENCE);
         setAttributes(intClass);
         return intClass;
@@ -20,7 +20,7 @@ public class PlayerClassCreater {
 
     public StrPlayerClass createWarrior() {
         strClass = new StrPlayerClass();
-        strClass.setName("Warrior");
+        strClass.setPlayerClassName("Warrior");
         strClass.setAttributeTyp(STRENGTH);
         setAttributes(strClass);
         return strClass;
@@ -28,7 +28,7 @@ public class PlayerClassCreater {
 
     public DexPlayerClass createRanger() {
         dexClass = new DexPlayerClass();
-        dexClass.setName("Ranger");
+        dexClass.setPlayerClassName("Ranger");
         dexClass.setAttributeTyp(DEXTERITY);
         setAttributes(dexClass);
         return dexClass;
@@ -36,7 +36,7 @@ public class PlayerClassCreater {
 
     public IntPlayerClass createPriest() {
         intClass = new IntPlayerClass();
-        intClass.setName("Priest");
+        intClass.setPlayerClassName("Priest");
         intClass.setAttributeTyp(INTELLIGENCE);
         setAttributes(intClass);
         return intClass;
@@ -44,23 +44,23 @@ public class PlayerClassCreater {
 
     public DexPlayerClass createRogue() {
         dexClass = new DexPlayerClass();
-        dexClass.setName("Rogue");
+        dexClass.setPlayerClassName("Rogue");
         dexClass.setAttributeTyp(DEXTERITY);
         setAttributes(dexClass);
         return dexClass;
     }
 
-    public StrPlayerClass createBarb() {
+    public StrPlayerClass createBarbarian() {
         strClass = new StrPlayerClass();
-        strClass.setName("Barbarian");
+        strClass.setPlayerClassName("Barbarian");
         strClass.setAttributeTyp(STRENGTH);
         setAttributes(strClass);
         return strClass;
     }
 
     private void setAttributes(PlayerClass playerClass) {
-        Random r = new Random();
-        int randomNumber = r.nextInt(15) + 6;
+        final Random r = new Random();
+        int randomNumber = r.nextInt(30) + 10;
         if (playerClass instanceof IntPlayerClass) {
             Integer IntelligenceValue = (int) (randomNumber * 0.5);
             Integer DexterityValue = (int) (randomNumber * 0.3);
