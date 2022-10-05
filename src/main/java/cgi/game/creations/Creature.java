@@ -23,7 +23,7 @@ public abstract class Creature {
         this.health = (double) Math.round(health);
     }
 
-    public void initializeHealth() throws Exception {
+    public void initializeHealth() {
     }
 
     public Double getMana() {
@@ -34,7 +34,7 @@ public abstract class Creature {
         this.mana = (double) Math.round(mana);
     }
 
-    public void initializeMana() throws Exception {
+    public void initializeMana() {
     }
 
     public Double getInitiative() {

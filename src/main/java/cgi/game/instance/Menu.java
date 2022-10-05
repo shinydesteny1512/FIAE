@@ -1,41 +1,33 @@
 package cgi.game.instance;
 
+import cgi.game.creations.player.Player;
 import cgi.game.creations.player.classes.DexPlayerClass;
 import cgi.game.creations.player.classes.IntPlayerClass;
 import cgi.game.creations.player.classes.PlayerClassFactory;
 import cgi.game.creations.player.classes.StrPlayerClass;
-import cgi.game.creations.player.Player;
 
 import java.util.Scanner;
 
 public class Menu {
 
-    private Player PLAYER;
-    private PlayerClassFactory playerClassFactory;
+    private Player player;
 
-    public void startGame() throws Exception {
-        PLAYER = new Player();
-        playerClassFactory = new PlayerClassFactory();
-        createPlayer(PLAYER);
+    public void startGame() {
+        player = new Player();
+        createPlayer(player);
         debugPlayer();
     }
 
-    private void createPlayer(Player player) throws Exception {
-        boolean nameChosen = false;
-        boolean classChosen = false;
+    private void createPlayer(Player player) {
+        boolean nameChosen;
+        boolean classChosen;
 
         final Scanner sc = new Scanner(System.in);
 
         System.out.println("Welcome to the World of [Uniting Worlds] \n What's your name?");
         do {
-            player.setName(sc.next());
-            System.out.println("So your name is {" + player.getName() + "}? Are you sure about that?");
-            String playerNameAccepted = sc.next();
-            if (playerNameAccepted.equals("yes") || playerNameAccepted.equals("y")) {
-                nameChosen = true;
-            } else {
-                System.out.println("Repeat your Name!");
-            }
+            String nameInput = sc.next();
+            nameChosen = isNameChosen(player, nameInput);
         } while (!nameChosen);
 
         System.out.println("So, {" + player.getName() + "}, which class do you want to play?");
@@ -49,23 +41,43 @@ public class Menu {
                      [5] Priest
                      [6] Rogue""");
             String classAccepted = sc.next();
-            setPLAYERClass(player, classAccepted);
-            player.initializeHealth();
-            player.initializeMana();
-            player.initializeInitiative();
-
-            System.out.println("Are you sure about your choice?");
-            String playerClassAccepted = sc.next();
-            if (playerClassAccepted.equals("yes") || playerClassAccepted.equals("y")) {
-                classChosen = true;
-            } else {
-                System.out.println("Choose again!");
-            }
+            classChosen = isClassChosen(player, classAccepted);
 
         } while (!classChosen);
     }
 
+    public boolean isClassChosen(Player player, String classAccepted) {
+        setPLAYERClass(player, classAccepted);
+        player.initializeHealth();
+        player.initializeMana();
+        player.initializeInitiative();
+
+        System.out.println("Are you sure about your choice?");
+        Scanner scanner = new Scanner(System.in);
+        String playerClassAccepted = scanner.next();
+        if (playerClassAccepted.equals("yes") || playerClassAccepted.equals("y")) {
+            return true;
+        } else {
+            System.out.println("Choose again!");
+            return false;
+        }
+    }
+
+    public boolean isNameChosen(Player player, String nameInput) {
+        player.setName(nameInput);
+        System.out.println("So your name is {" + player.getName() + "}? Are you sure about that?");
+        Scanner scanner = new Scanner(System.in);
+        String playerNameAccepted = scanner.next();
+        if (playerNameAccepted.equals("yes") || playerNameAccepted.equals("y")) {
+            return true;
+        } else {
+            System.out.println("Repeat your Name!");
+            return false;
+        }
+    }
+
     private void setPLAYERClass(Player player, String choice) {
+        final PlayerClassFactory playerClassFactory = new PlayerClassFactory();
         switch (choice) {
             case "1", "!" -> {
                 System.out.println("You have chosen Warrior! AHU");
@@ -99,24 +111,24 @@ public class Menu {
     private void debugPlayer() {
         System.out.println(
                 "#################################################################################" +
-                        "\n PLAYER NAME:" + PLAYER.getName() +
-                        "\n PLAYER HEALTH: " + PLAYER.getHealth() +
-                        "\n PLAYER MANA: " + PLAYER.getMana() +
-                        "\n PLAYER INITIATIVE: " + PLAYER.getInitiative() +
-                        "\n PLAYER INITIATIVE BONUS: " + PLAYER.getInitiativeBonus() +
-                        "\n PLAYER CLASS: " + PLAYER.getMyClass().getPlayerClassName() +
-                        "\n PLAYER CLASS ATTRIBUTE TYPE: " + PLAYER.getMyClass().getAttributeTyp() +
-                        "\n PLAYER CLASS STRENGTH: " + PLAYER.getMyClass().getStr() +
-                        "\n PLAYER CLASS DEXTERITY: " + PLAYER.getMyClass().getDex() +
-                        "\n PLAYER CLASS INTELLIGENCE: " + PLAYER.getMyClass().getInt() +
+                        "\n PLAYER NAME:" + player.getName() +
+                        "\n PLAYER HEALTH: " + player.getHealth() +
+                        "\n PLAYER MANA: " + player.getMana() +
+                        "\n PLAYER INITIATIVE: " + player.getInitiative() +
+                        "\n PLAYER INITIATIVE BONUS: " + player.getInitiativeBonus() +
+                        "\n PLAYER CLASS: " + player.getMyClass().getPlayerClassName() +
+                        "\n PLAYER CLASS ATTRIBUTE TYPE: " + player.getMyClass().getAttributeTyp() +
+                        "\n PLAYER CLASS STRENGTH: " + player.getMyClass().getStr() +
+                        "\n PLAYER CLASS DEXTERITY: " + player.getMyClass().getDex() +
+                        "\n PLAYER CLASS INTELLIGENCE: " + player.getMyClass().getInt() +
                         "\n ################################################################################" +
                         "\n Class Specific Values: ");
-        if (PLAYER.getMyClass() instanceof StrPlayerClass strPlayerClass) {
-            System.out.println("STR CLASS");
-        } else if (PLAYER.getMyClass() instanceof DexPlayerClass dexPlayerClass) {
-            System.out.println("DEX CLASS");
-        } else if (PLAYER.getMyClass() instanceof IntPlayerClass intPlayerClass) {
-            System.out.println("INT CLASS");
+        if (player.getMyClass() instanceof StrPlayerClass strPlayerClass) {
+            System.out.println("STR CLASS: " + strPlayerClass);
+        } else if (player.getMyClass() instanceof DexPlayerClass dexPlayerClass) {
+            System.out.println("DEX CLASS: " + dexPlayerClass);
+        } else if (player.getMyClass() instanceof IntPlayerClass intPlayerClass) {
+            System.out.println("INT CLASS: " + intPlayerClass);
         }
     }
 }

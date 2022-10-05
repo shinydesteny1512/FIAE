@@ -1,10 +1,11 @@
 package cgi.game.creations.player.classes;
 
+import cgi.game.creations.Attributes;
 import cgi.game.creations.player.Player;
 
 public abstract class PlayerClass extends Player {
     private String playerClassName;
-    private String attributeTyp;
+    private Attributes attributeTyp;
     private Integer str;
     private Integer dex;
     private Integer Int;
@@ -17,11 +18,11 @@ public abstract class PlayerClass extends Player {
         this.playerClassName = playerClassName;
     }
 
-    public String getAttributeTyp() {
+    public Attributes getAttributeTyp() {
         return attributeTyp;
     }
 
-    public void setAttributeTyp(String attributeTyp) {
+    public void setAttributeTyp(Attributes attributeTyp) {
         this.attributeTyp = attributeTyp;
     }
 

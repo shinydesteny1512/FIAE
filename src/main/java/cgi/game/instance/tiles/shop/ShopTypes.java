@@ -1,14 +1,14 @@
 package cgi.game.instance.tiles.shop;
 
-public enum ShopTypen {
+public enum ShopTypes {
 
     WEAPON("Weapon"),
     ARMOUR("Armour"),
     ACCESSOIRES("Jewelery");
 
-    private String shopTyp;
+    private final String shopTyp;
 
-    ShopTypen(String shopTyp) {
+    ShopTypes(String shopTyp) {
         this.shopTyp = shopTyp;
     }
 

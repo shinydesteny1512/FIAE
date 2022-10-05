@@ -1,19 +1,18 @@
 package cgi.game.creations.player.classes;
 
+import cgi.game.creations.Attributes;
+
 import java.util.Random;
 
 public class PlayerClassFactory {
     private IntPlayerClass intClass;
     private StrPlayerClass strClass;
     private DexPlayerClass dexClass;
-    private final String STRENGTH = "STRENGTH";
-    private final String INTELLIGENCE = "INTELLIGENCE";
-    private final String DEXTERITY = "DEXTERITY";
 
     public IntPlayerClass createMage() {
         intClass = new IntPlayerClass();
         intClass.setPlayerClassName("Mage");
-        intClass.setAttributeTyp(INTELLIGENCE);
+        intClass.setAttributeTyp(Attributes.INTELLIGENCE);
         setAttributes(intClass);
         return intClass;
     }
@@ -21,7 +20,7 @@ public class PlayerClassFactory {
     public StrPlayerClass createWarrior() {
         strClass = new StrPlayerClass();
         strClass.setPlayerClassName("Warrior");
-        strClass.setAttributeTyp(STRENGTH);
+        strClass.setAttributeTyp(Attributes.STRENGTH);
         setAttributes(strClass);
         return strClass;
     }
@@ -29,7 +28,7 @@ public class PlayerClassFactory {
     public DexPlayerClass createRanger() {
         dexClass = new DexPlayerClass();
         dexClass.setPlayerClassName("Ranger");
-        dexClass.setAttributeTyp(DEXTERITY);
+        dexClass.setAttributeTyp(Attributes.DEXTERITY);
         setAttributes(dexClass);
         return dexClass;
     }
@@ -37,7 +36,7 @@ public class PlayerClassFactory {
     public IntPlayerClass createPriest() {
         intClass = new IntPlayerClass();
         intClass.setPlayerClassName("Priest");
-        intClass.setAttributeTyp(INTELLIGENCE);
+        intClass.setAttributeTyp(Attributes.INTELLIGENCE);
         setAttributes(intClass);
         return intClass;
     }
@@ -45,7 +44,7 @@ public class PlayerClassFactory {
     public DexPlayerClass createRogue() {
         dexClass = new DexPlayerClass();
         dexClass.setPlayerClassName("Rogue");
-        dexClass.setAttributeTyp(DEXTERITY);
+        dexClass.setAttributeTyp(Attributes.DEXTERITY);
         setAttributes(dexClass);
         return dexClass;
     }
@@ -53,7 +52,7 @@ public class PlayerClassFactory {
     public StrPlayerClass createBarbarian() {
         strClass = new StrPlayerClass();
         strClass.setPlayerClassName("Barbarian");
-        strClass.setAttributeTyp(STRENGTH);
+        strClass.setAttributeTyp(Attributes.STRENGTH);
         setAttributes(strClass);
         return strClass;
     }
