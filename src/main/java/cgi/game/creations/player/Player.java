@@ -1,54 +1,86 @@
 package cgi.game.creations.player;
 
-import cgi.game.creations.classes.PlayerClass;
+import cgi.game.creations.Creature;
+import cgi.game.creations.player.classes.DexPlayerClass;
+import cgi.game.creations.player.classes.PlayerClass;
 
-public class Player {
-    private String playerName;
-    private Double health;
-    private Double mana;
+import java.util.Arrays;
+
+public class Player extends Creature {
     private PlayerClass myPlayerClass;
+    private final double dexInitiativeMultiplier = 1.1;
+    private final double nonDexInitiativeMultiplier = 1.0;
 
-    public String getPlayerName() {
-        return playerName;
-    }
+    @Override
+    public void initializeHealth() {
 
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
-    }
+        final double strBaseHealth = 80.0;
+        final double strHealthMultiplier = 30.0;
+        final double dexBaseHealth = 60.0;
+        final double dexHealthMultiplier = 20.0;
+        final double intBaseHealth = 50.0;
+        final double intHealthMultiplier = 15.0;
 
-    public Double getHealth() {
-        return health;
-    }
-
-    public void setHealth(Double health) {
-        this.health = health;
-    }
-
-    public void initializeHealth() throws Exception {
-        switch (this.myPlayerClass.getAttributeTyp()) {
-            case "STRENGTH" -> this.setHealth((double) (getMyClass() != null ? 50 + (getMyClass().getStr() * 35) : 0));
-            case "DEXTERITY" -> this.setHealth((double) (getMyClass() != null ? 50 + (getMyClass().getStr() * 25) : 0));
-            case "INTELLIGENCE" ->
-                    this.setHealth((double) (getMyClass() != null ? 50 + (getMyClass().getStr() * 15) : 0));
-            default -> throw new Exception();
+        try {
+            switch (this.myPlayerClass.getAttributeTyp()) {
+                case STRENGTH ->
+                        this.setHealth(getMyClass() != null ? strBaseHealth + (getMyClass().getStr() * strHealthMultiplier) : 0);
+                case DEXTERITY ->
+                        this.setHealth(getMyClass() != null ? dexBaseHealth + (getMyClass().getStr() * dexHealthMultiplier) : 0);
+                case INTELLIGENCE ->
+                        this.setHealth(getMyClass() != null ? intBaseHealth + (getMyClass().getStr() * intHealthMultiplier) : 0);
+                default -> throw new Exception();
+            }
+        } catch (Exception e) {
+            System.out.println(Arrays.toString(e.getStackTrace()));
         }
     }
 
-    public Double getMana() {
-        return mana;
+    @Override
+    public void initializeMana() {
+
+        final double strBaseMana = 30.0;
+        final double strManaMultiplier = 15.0;
+        final double dexBaseMana = 45.0;
+        final double dexManaMultiplier = 20.0;
+        final double intBaseMana = 60.0;
+        final double intManaMultiplier = 30.0;
+
+        try {
+            switch (this.myPlayerClass.getAttributeTyp()) {
+                case STRENGTH -> this.setMana(getMyClass() != null ? strBaseMana +
+                        (this.getMyClass().getInt() * strManaMultiplier) : 0);
+                case DEXTERITY -> this.setMana(getMyClass() != null ? dexBaseMana +
+                        (this.getMyClass().getInt() * dexManaMultiplier) : 0);
+                case INTELLIGENCE -> this.setMana(getMyClass() != null ? intBaseMana +
+                        (this.getMyClass().getInt() * intManaMultiplier) : 0);
+                default -> throw new Exception();
+            }
+        } catch (Exception e) {
+            System.out.println(Arrays.toString(e.getStackTrace()));
+        }
     }
 
-    public void setMana(Double mana) {
-        this.mana = mana;
+    @Override
+    public void initializeInitiative() {
+        if (this.getMyClass() != null) {
+            if (this.getMyClass() instanceof DexPlayerClass) {
+                this.setInitiative(((this.getMyClass().getDex() * 2.5) +
+                        (this.getMyClass().getDex() * dexInitiativeMultiplier)));
+            } else {
+                this.setInitiative(((this.getMyClass().getDex() * 2.5) +
+                        (this.getMyClass().getDex() * nonDexInitiativeMultiplier)));
+            }
+        }
+
     }
 
-    public void initializeMana() throws Exception {
-        switch (this.myPlayerClass.getAttributeTyp()) {
-            case "STRENGTH" -> this.setMana((double) (getMyClass() != null ? 65 + (getMyClass().getInt() * 15) : 0));
-            case "DEXTERITY" -> this.setMana((double) (getMyClass() != null ? 65 + (getMyClass().getInt() * 35) : 0));
-            case "INTELLIGENCE" ->
-                    this.setMana((double) (getMyClass() != null ? 65 + (getMyClass().getInt() * 50) : 0));
-            default -> throw new Exception();
+    public double getInitiativeBonus() {
+
+        if (this.getInitiative() != null) {
+            return Math.round(this.getInitiative() - (this.getInitiative() / dexInitiativeMultiplier));
+        } else {
+            return 0;
         }
     }
 
