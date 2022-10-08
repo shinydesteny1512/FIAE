@@ -1,12 +1,15 @@
 package cgi.game.creations.player.races;
 
-public abstract class Races {
-    public String bodyHeight;
-    public int age;
-    public String bodyAge;
+import cgi.game.creations.Attributes;
 
-    public Races(int age) {
-        this.age = age;
+public abstract class Races {
+    private String bodyHeight;
+    private Integer age;
+    private String bodyAge;
+    private Attributes attributes;
+
+    public Races(Attributes attributes) {
+        this.attributes = attributes;
     }
 
     public String getBodyHeight() {
@@ -17,11 +20,11 @@ public abstract class Races {
         this.bodyHeight = bodyHeight;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -31,5 +34,13 @@ public abstract class Races {
 
     public void setBodyAge(String bodyAge) {
         this.bodyAge = bodyAge;
+    }
+
+    public Attributes getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(Attributes attributes) {
+        this.attributes = attributes;
     }
 }

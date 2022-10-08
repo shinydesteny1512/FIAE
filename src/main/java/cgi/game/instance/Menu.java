@@ -15,7 +15,8 @@ public class Menu {
     public void startGame() {
         player = new Player();
         createPlayer(player);
-        debugPlayer();
+        cleanScreen();
+        debugPlayer(player);
     }
 
     private void createPlayer(Player player) {
@@ -26,7 +27,7 @@ public class Menu {
 
         System.out.println("Welcome to the World of [Uniting Worlds] \n What's your name?");
         do {
-            String nameInput = sc.next();
+            final String nameInput = sc.next();
             nameChosen = isNameChosen(player, nameInput);
         } while (!nameChosen);
 
@@ -40,10 +41,30 @@ public class Menu {
                      [4] Barbarian
                      [5] Priest
                      [6] Rogue""");
-            String classAccepted = sc.next();
+            final String classAccepted = sc.next();
             classChosen = isClassChosen(player, classAccepted);
 
         } while (!classChosen);
+    }
+
+    private void cleanScreen(){
+        try
+        {
+            final String os = System.getProperty("os.name");
+
+            if (os.contains("Windows"))
+            {
+                Runtime.getRuntime().exec("cls");
+            }
+            else
+            {
+                Runtime.getRuntime().exec("clear");
+            }
+        }
+        catch (final Exception e)
+        {
+            //  Handle any exceptions.
+        }
     }
 
     public boolean isClassChosen(Player player, String classAccepted) {
@@ -108,7 +129,7 @@ public class Menu {
     }
 
 
-    private void debugPlayer() {
+    private void debugPlayer(Player player) {
         System.out.println(
                 "#################################################################################" +
                         "\n PLAYER NAME:" + player.getName() +

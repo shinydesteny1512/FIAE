@@ -1,4 +1,11 @@
 package cgi.game.creations.player.races;
 
-public class Dwarf {
+import cgi.game.creations.Attributes;
+
+public class Dwarf extends Races {
+
+    public Dwarf() {
+        super(Attributes.STRENGTH);
+    }
+
 }

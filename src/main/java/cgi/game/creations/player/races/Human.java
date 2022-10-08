@@ -1,4 +1,11 @@
 package cgi.game.creations.player.races;
 
-public class Human {
+import cgi.game.creations.Attributes;
+
+public class Human extends Races {
+
+    public Human() {
+        super(Attributes.INTELLIGENCE);
+    }
+
 }
