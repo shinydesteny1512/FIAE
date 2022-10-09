@@ -1,11 +1,14 @@
 package cgi.game.controller;
 
-import cgi.game.instance.Menu;
+import cgi.game.Menues.MainWindow;
+import cgi.game.Menues.WindowNames;
 
 public class Runner {
+
     public static void main(String[] args) {
-        Menu menu = new Menu();
-        menu.startGame();
+        MainWindow mainWindow = new MainWindow(WindowNames.MAINMENU);
+        mainWindow.startWindow();
+
     }
 
 }

@@ -1,4 +1,4 @@
-package cgi.game.instance;
+package cgi.game.Menues;
 
 import cgi.game.creations.player.Player;
 import cgi.game.creations.player.classes.DexPlayerClass;
@@ -8,11 +8,16 @@ import cgi.game.creations.player.classes.StrPlayerClass;
 
 import java.util.Scanner;
 
-public class Menu {
+public class CreatePlayerWindow extends Window {
 
     private Player player;
 
+    public CreatePlayerWindow(WindowNames name) {
+        super(name);
+    }
+
     public void startGame() {
+        cleanScreen();
         player = new Player();
         createPlayer(player);
         cleanScreen();
@@ -25,7 +30,7 @@ public class Menu {
 
         final Scanner sc = new Scanner(System.in);
 
-        System.out.println("Welcome to the World of [Uniting Worlds] \n What's your name?");
+        System.out.println("Welcome to the World of [Uniting Worlds] \nWhat's your name?");
         do {
             final String nameInput = sc.next();
             nameChosen = isNameChosen(player, nameInput);
@@ -34,7 +39,7 @@ public class Menu {
         System.out.println("So, {" + player.getName() + "}, which class do you want to play?");
         do {
             System.out.println("""
-                    Press the number in [] to choose your class:\s
+                    Press the number in [] to choose your class:
                      [1] Warrior
                      [2] Ranger
                      [3] Mage
@@ -45,26 +50,7 @@ public class Menu {
             classChosen = isClassChosen(player, classAccepted);
 
         } while (!classChosen);
-    }
 
-    private void cleanScreen(){
-        try
-        {
-            final String os = System.getProperty("os.name");
-
-            if (os.contains("Windows"))
-            {
-                Runtime.getRuntime().exec("cls");
-            }
-            else
-            {
-                Runtime.getRuntime().exec("clear");
-            }
-        }
-        catch (final Exception e)
-        {
-            //  Handle any exceptions.
-        }
     }
 
     public boolean isClassChosen(Player player, String classAccepted) {
@@ -128,7 +114,6 @@ public class Menu {
         }
     }
 
-
     private void debugPlayer(Player player) {
         System.out.println(
                 "#################################################################################" +
@@ -152,4 +137,6 @@ public class Menu {
             System.out.println("INT CLASS: " + intPlayerClass);
         }
     }
+
+
 }
