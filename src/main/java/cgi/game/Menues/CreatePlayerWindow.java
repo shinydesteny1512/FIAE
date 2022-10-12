@@ -17,7 +17,6 @@ public class CreatePlayerWindow extends Window {
     }
 
     public void startGame() {
-        cleanScreen();
         player = new Player();
         createPlayer(player);
         cleanScreen();
@@ -112,23 +111,35 @@ public class CreatePlayerWindow extends Window {
             }
             default -> System.out.println("Wrong Input, try again");
         }
+
     }
 
     private void debugPlayer(Player player) {
-        System.out.println(
-                "#################################################################################" +
-                        "\n PLAYER NAME:" + player.getName() +
-                        "\n PLAYER HEALTH: " + player.getHealth() +
-                        "\n PLAYER MANA: " + player.getMana() +
-                        "\n PLAYER INITIATIVE: " + player.getInitiative() +
-                        "\n PLAYER INITIATIVE BONUS: " + player.getInitiativeBonus() +
-                        "\n PLAYER CLASS: " + player.getMyClass().getPlayerClassName() +
-                        "\n PLAYER CLASS ATTRIBUTE TYPE: " + player.getMyClass().getAttributeTyp() +
-                        "\n PLAYER CLASS STRENGTH: " + player.getMyClass().getStr() +
-                        "\n PLAYER CLASS DEXTERITY: " + player.getMyClass().getDex() +
-                        "\n PLAYER CLASS INTELLIGENCE: " + player.getMyClass().getInt() +
-                        "\n ################################################################################" +
-                        "\n Class Specific Values: ");
+        System.out.printf(String.format("""
+                        #######################################################
+                        PLAYER NAME: %s
+                        PLAYER HEALTH: %s
+                        PLAYER MANA: %s
+                        PLAYER INITIATIVE: %s
+                        PLAYER INITIATIVE BONUS: %s
+                        PLAYER CLASS: %s
+                        PLAYER CLASS ATTRIBUTE TYPE: %s
+                        PLAYER CLASS STRENGTH: %s
+                        PLAYER CLASS DEXTERITY: %s
+                        PLAYER CLASS INTELLIGENCE: %s
+                        #######################################################
+                        """,
+                player.getName(),
+                player.getHealth(),
+                player.getMana(),
+                player.getInitiative(),
+                player.getInitiativeBonus(),
+                player.getMyClass().getPlayerClassName(),
+                player.getMyClass().getAttributeTyp(),
+                player.getMyClass().getStr(),
+                player.getMyClass().getDex(),
+                player.getMyClass().getInt()));
+
         if (player.getMyClass() instanceof StrPlayerClass strPlayerClass) {
             System.out.println("STR CLASS: " + strPlayerClass);
         } else if (player.getMyClass() instanceof DexPlayerClass dexPlayerClass) {
