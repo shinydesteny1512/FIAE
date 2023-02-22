@@ -32,8 +32,9 @@ public abstract class PlayerClass extends Player {
     public void initializeAttributes() {
         final Random r = new Random();
         int randomNumber = r.nextInt(30) + 10;
+        System.out.println("Randomnumber: " + randomNumber);
         if (this.getAttributeTyp().toString() != null) {
-            if (this.getAttributeTyp().toString().equals(Attributes.STRENGTH.toString())) {
+            if (this.getAttributeTyp().toString().equals(Attributes.INTELLIGENCE.toString())) {
                 Integer IntelligenceValue = (int) (randomNumber * 0.5);
                 Integer DexterityValue = (int) (randomNumber * 0.3);
                 Integer StrengthValue = (int) (randomNumber * 0.2);
@@ -49,7 +50,7 @@ public abstract class PlayerClass extends Player {
                 this.setDex(DexterityValue);
                 this.setStr(StrengthValue);
 
-            } else if (this.getAttributeTyp().toString().equals(Attributes.INTELLIGENCE.toString())) {
+            } else if (this.getAttributeTyp().toString().equals(Attributes.STRENGTH.toString())) {
                 Integer IntelligenceValue = (int) (randomNumber * 0.2);
                 Integer DexterityValue = (int) (randomNumber * 0.3);
                 Integer StrengthValue = (int) (randomNumber * 0.5);
@@ -57,6 +58,14 @@ public abstract class PlayerClass extends Player {
                 this.setDex(DexterityValue);
                 this.setStr(StrengthValue);
 
+            } else {
+                System.out.println("Attribute Type not found, values will be rolled on a average Value");
+                Integer IntelligenceValue = (int) (randomNumber * 0.33);
+                Integer DexterityValue = (int) (randomNumber * 0.33);
+                Integer StrengthValue = (int) (randomNumber * 0.33);
+                this.setInt(IntelligenceValue);
+                this.setDex(DexterityValue);
+                this.setStr(StrengthValue);
             }
         }
     }

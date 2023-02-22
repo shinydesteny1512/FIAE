@@ -10,6 +10,10 @@ public class GameInstance {
         this.stageTyp = stageTyp;
     }
 
+    public void setGameStageToStandard() {
+        this.gameStage = 0;
+    }
+
     public int getGameStage() {
         return gameStage;
     }

@@ -1,8 +1,10 @@
-package cgi.game.Menues;
+package cgi.game.menues;
 
 public enum WindowNames {
 
     MAINMENU("Main Menu"),
+
+    GAMEWINDOW("Game Window"),
     CREATEPLAYERMENU("Create Player"),
     PLAYERINFOMENU("Player Information"),
     FIGHTMENU("Fight"),
@@ -10,7 +12,7 @@ public enum WindowNames {
     RESTMENU("Rest"),
     EVENTMENU("Event");
 
-    private String menuName;
+    private final String menuName;
 
     WindowNames(String menuName) {
         this.menuName = menuName;

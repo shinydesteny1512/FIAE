@@ -1,18 +1,18 @@
-package cgi.game.Menues;
+package cgi.game.menues.general;
+
+import cgi.game.menues.Window;
+import cgi.game.menues.WindowFactory;
 
 import java.util.Scanner;
 
 public class MainWindow extends Window {
 
-    private CreatePlayerWindow createPlayerMenu;
-
-    public MainWindow(final WindowNames name) {
+    public MainWindow(final String name) {
         super(name);
     }
 
     public final void startWindow() {
         cleanScreen();
-        createPlayerMenu = new CreatePlayerWindow(WindowNames.CREATEPLAYERMENU);
         createMainMenu();
     }
 
@@ -27,9 +27,10 @@ public class MainWindow extends Window {
                 """);
 
         final String menuChosen = sc.next();
+
         switch (menuChosen) {
             case "1", "!" -> {
-                createPlayerMenu.startGame();
+                WindowFactory.createPlayerWindow.startGame();
                 System.out.println("Game Started");
 
             }

@@ -1,18 +1,18 @@
-package cgi.game.Menues;
+package cgi.game.menues;
 
 public abstract class Window {
 
-    private final WindowNames name;
+    private final String windowName;
 
-    public Window(final WindowNames name) {
-        this.name = name;
+    public Window(final String windowName) {
+        this.windowName = windowName;
     }
 
-    public WindowNames getName() {
-        return name;
+    public String getWindowName() {
+        return windowName;
     }
 
-    void cleanScreen() {
+    protected void cleanScreen() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
@@ -24,7 +24,7 @@ public abstract class Window {
         }
     }
 
-    void closeScreen() {
+    protected void closeScreen() {
         try {
             System.exit(0);
         } catch (final Exception e) {
