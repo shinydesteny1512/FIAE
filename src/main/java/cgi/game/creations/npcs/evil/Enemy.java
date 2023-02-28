@@ -14,13 +14,13 @@ public class Enemy extends Creature {
 
     @Override
     public void initializeHealth() {
-        this.setHealth(this.getBodyTyp() != null ? instance.getGameStage() * this.getBodyTyp().getBaseHP() : 75.0);
+        this.setHealth(this.getBodyTyp() != null ? GameInstance.gameStage * this.getBodyTyp().getBaseHP() : 75.0);
 
     }
 
     @Override
     public void initializeMana() {
-        this.setMana(this.getBodyTyp() != null ? instance.getGameStage() * this.getBodyTyp().getBaseMana() : 25.0);
+        this.setMana(this.getBodyTyp() != null ? GameInstance.gameStage * this.getBodyTyp().getBaseMana() : 25.0);
 
     }
 

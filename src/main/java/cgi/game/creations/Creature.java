@@ -1,11 +1,17 @@
 package cgi.game.creations;
 
-public abstract class Creature {
+import cgi.game.creations.player.Inventory;
 
+public abstract class Creature {
     private String name;
     private Double health;
     private Double mana;
     private Double initiative;
+    private final Inventory inventory;
+
+    public Creature() {
+        this.inventory = new Inventory(null, null, null, null);
+    }
 
     public String getName() {
         return name;
@@ -46,5 +52,9 @@ public abstract class Creature {
     }
 
     public void initializeInitiative() {
+    }
+
+    public Inventory getInventory() {
+        return inventory;
     }
 }

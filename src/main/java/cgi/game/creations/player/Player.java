@@ -49,12 +49,12 @@ public class Player extends Creature {
 
         try {
             switch (this.myPlayerClass.getAttributeTyp()) {
-                case STRENGTH -> this.setMana(getMyClass() != null ? strBaseMana +
-                        (this.getMyClass().getInt() * strManaMultiplier) : 0);
-                case DEXTERITY -> this.setMana(getMyClass() != null ? dexBaseMana +
-                        (this.getMyClass().getInt() * dexManaMultiplier) : 0);
-                case INTELLIGENCE -> this.setMana(getMyClass() != null ? intBaseMana +
-                        (this.getMyClass().getInt() * intManaMultiplier) : 0);
+                case STRENGTH ->
+                        this.setMana(getMyClass() != null ? strBaseMana + (this.getMyClass().getInt() * strManaMultiplier) : 0);
+                case DEXTERITY ->
+                        this.setMana(getMyClass() != null ? dexBaseMana + (this.getMyClass().getInt() * dexManaMultiplier) : 0);
+                case INTELLIGENCE ->
+                        this.setMana(getMyClass() != null ? intBaseMana + (this.getMyClass().getInt() * intManaMultiplier) : 0);
                 default -> throw new Exception();
             }
         } catch (Exception e) {
@@ -66,12 +66,10 @@ public class Player extends Creature {
     public void initializeInitiative() {
         if (this.getMyClass() != null) {
             if (this.getMyClass() instanceof DexPlayerClass) {
-                this.setInitiative(((this.getMyClass().getDex() * 2.5) +
-                        (this.getMyClass().getDex() * dexInitiativeMultiplier)));
+                this.setInitiative(((this.getMyClass().getDex() * 2.5) + (this.getMyClass().getDex() * dexInitiativeMultiplier)));
             } else {
                 double nonDexInitiativeMultiplier = 1.0;
-                this.setInitiative(((this.getMyClass().getDex() * 2.5) +
-                        (this.getMyClass().getDex() * nonDexInitiativeMultiplier)));
+                this.setInitiative(((this.getMyClass().getDex() * 2.5) + (this.getMyClass().getDex() * nonDexInitiativeMultiplier)));
             }
         }
 
@@ -96,29 +94,22 @@ public class Player extends Creature {
 
     public void debugPlayer() {
         System.out.printf(String.format("""
-                        #######################################################
-                        PLAYER NAME: %s
-                        PLAYER HEALTH: %s
-                        PLAYER MANA: %s
-                        PLAYER INITIATIVE: %s
-                        PLAYER INITIATIVE BONUS: %s
-                        PLAYER CLASS: %s
-                        PLAYER CLASS ATTRIBUTE TYPE: %s
-                        PLAYER CLASS STRENGTH: %s
-                        PLAYER CLASS DEXTERITY: %s
-                        PLAYER CLASS INTELLIGENCE: %s
-                        #######################################################
-                        """,
-                this.getName(),
-                this.getHealth(),
-                this.getMana(),
-                this.getInitiative(),
-                this.getInitiativeBonus(),
-                this.getMyClass().getPlayerClassName(),
-                this.getMyClass().getAttributeTyp(),
-                this.getMyClass().getStr(),
-                this.getMyClass().getDex(),
-                this.getMyClass().getInt()));
+                #######################################################
+                PLAYER NAME: %s
+                PLAYER HEALTH: %s
+                PLAYER MANA: %s
+                PLAYER INITIATIVE: %s
+                PLAYER INITIATIVE BONUS: %s
+                PLAYER CLASS: %s
+                PLAYER CLASS ATTRIBUTE TYPE: %s
+                PLAYER CLASS STRENGTH: %s
+                PLAYER CLASS DEXTERITY: %s
+                PLAYER CLASS INTELLIGENCE: %s
+                PLAYER CLASS WEAPON: %s
+                PLAYER CLASS ARMOUR: %s
+                PLAYER CLASS ACCESSORIES: %s
+                #######################################################
+                """, this.getName(), this.getHealth(), this.getMana(), this.getInitiative(), this.getInitiativeBonus(), this.getMyClass().getPlayerClassName(), this.getMyClass().getAttributeTyp(), this.getMyClass().getStr(), this.getMyClass().getDex(), this.getMyClass().getInt(), this.getInventory().getWeapon().getName(), this.getInventory().getHelm(), this.getInventory().getAccessoires()));
 
         if (this.getMyClass() instanceof StrPlayerClass strPlayerClass) {
             System.out.println("STR CLASS: " + strPlayerClass);

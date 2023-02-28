@@ -2,7 +2,6 @@ package cgi.game.creations.items.weapon;
 
 import cgi.game.creations.Attributes;
 import cgi.game.creations.items.Item;
-import cgi.game.instance.level.GameInstance;
 
 import java.util.Random;
 
@@ -22,10 +21,8 @@ public abstract class Weapon extends Item {
     private Double attackSpeed;
     private Attributes attributeBonus;
     private Integer upgradeCount;
-    private GameInstance instance;
 
-    public Weapon(GameInstance instance) {
-        this.instance = instance;
+    public Weapon() {
         this.sharpness = 1;
         this.upgradeCount = 0;
         this.avgDamage = generateAvgDamage();

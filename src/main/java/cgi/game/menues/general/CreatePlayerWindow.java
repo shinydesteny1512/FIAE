@@ -8,7 +8,6 @@ import cgi.game.menues.WindowFactory;
 import java.util.Scanner;
 
 public class CreatePlayerWindow extends Window {
-
     private final Player player;
 
     public CreatePlayerWindow(String windowName) {
@@ -19,7 +18,7 @@ public class CreatePlayerWindow extends Window {
     public void startGame() {
         createPlayer(player);
         cleanScreen();
-        debugPlayer(player);
+        player.debugPlayer(); // will be deleted after player info menue is build in
     }
 
     private void createPlayer(Player player) {
@@ -34,6 +33,7 @@ public class CreatePlayerWindow extends Window {
             do {
                 final String nameInput = sc.next();
                 nameChosen = isNameChosen(player, nameInput);
+
             } while (!nameChosen);
 
             System.out.println("So, {" + player.getName() + "}, which class do you want to play?");
@@ -46,6 +46,7 @@ public class CreatePlayerWindow extends Window {
                          [4] Barbarian
                          [5] Priest
                          [6] Rogue""");
+
                 final String classAccepted = sc.next();
                 classChosen = isClassChosen(player, classAccepted);
 
@@ -56,6 +57,9 @@ public class CreatePlayerWindow extends Window {
             finishedCreation = isCreationFinished(finished);
 
         } while (!finishedCreation);
+
+        System.out.println("GAMEMENU");
+        WindowFactory.gameWindow.gameMenu(player);
     }
 
     private boolean isCreationFinished(String finished) {
@@ -131,42 +135,4 @@ public class CreatePlayerWindow extends Window {
 
     }
 
-    private void debugPlayer(Player player) {
-        player.debugPlayer();
-    }
-//    }
-//    private void debugPlayer(Player player) {
-//        System.out.printf(String.format("""
-//                        #######################################################
-//                        PLAYER NAME: %s
-//                        PLAYER HEALTH: %s
-//                        PLAYER MANA: %s
-//                        PLAYER INITIATIVE: %s
-//                        PLAYER INITIATIVE BONUS: %s
-//                        PLAYER CLASS: %s
-//                        PLAYER CLASS ATTRIBUTE TYPE: %s
-//                        PLAYER CLASS STRENGTH: %s
-//                        PLAYER CLASS DEXTERITY: %s
-//                        PLAYER CLASS INTELLIGENCE: %s
-//                        #######################################################
-//                        """,
-//                player.getName(),
-//                player.getHealth(),
-//                player.getMana(),
-//                player.getInitiative(),
-//                player.getInitiativeBonus(),
-//                player.getMyClass().getPlayerClassName(),
-//                player.getMyClass().getAttributeTyp(),
-//                player.getMyClass().getStr(),
-//                player.getMyClass().getDex(),
-//                player.getMyClass().getInt()));
-//
-//        if (player.getMyClass() instanceof StrPlayerClass strPlayerClass) {
-//            System.out.println("STR CLASS: " + strPlayerClass);
-//        } else if (player.getMyClass() instanceof DexPlayerClass dexPlayerClass) {
-//            System.out.println("DEX CLASS: " + dexPlayerClass);
-//        } else if (player.getMyClass() instanceof IntPlayerClass intPlayerClass) {
-//            System.out.println("INT CLASS: " + intPlayerClass);
-//        }
-//    }
 }

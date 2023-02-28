@@ -4,7 +4,9 @@ import java.util.Random;
 
 public abstract class Item {
 
-    Rarity rarity;
+    private Rarity rarity;
+
+    private Double value;
 
     public Item() {
         initializeItem();
@@ -35,5 +37,13 @@ public abstract class Item {
 
     public void setRarity(Rarity rarity) {
         this.rarity = rarity;
+    }
+
+    public Double getValue() {
+        return value;
+    }
+
+    public void setValue(Double value) {
+        this.value = value;
     }
 }

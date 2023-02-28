@@ -14,56 +14,47 @@ import cgi.game.creations.items.weapon.meele.Axe;
 import cgi.game.creations.items.weapon.meele.Sword;
 import cgi.game.creations.items.weapon.range.Bow;
 import cgi.game.creations.items.weapon.range.Gun;
-import cgi.game.instance.level.GameInstance;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ItemFactory {
-    private final GameInstance instance;
     private final List<Armour> armourListOfStage;
     private final List<Weapon> weaponsOfStage;
     private final List<Accessoires> accessoiresListOfStage;
 
-    public ItemFactory(GameInstance instance) {
-        this.instance = instance;
-        armourListOfStage = new ArrayList<>();
-        weaponsOfStage = new ArrayList<>();
-        accessoiresListOfStage = new ArrayList<>();
+    public ItemFactory() {
+        this.armourListOfStage = new ArrayList<>();
+        this.weaponsOfStage = new ArrayList<>();
+        this.accessoiresListOfStage = new ArrayList<>();
+
     }
 
     public void createArmourStagePack() {
-        for (int i = 1; i <= 2; i++) {
-            armourListOfStage.add(new Helm(instance, "Helm"));
-            armourListOfStage.add(new Helm(instance, "Helm"));
-            armourListOfStage.add(new Helm(instance, "Helm"));
-            armourListOfStage.add(new Chest(instance, "Chest"));
-            armourListOfStage.add(new Chest(instance, "Chest"));
-            armourListOfStage.add(new Chest(instance, "Chest"));
+        for (int i = 1; i <= 6; i++) {
+            armourListOfStage.add(new Helm());
+            armourListOfStage.add(new Chest());
         }
 
     }
 
     public void createWeaponStagePack() {
         for (int i = 1; i <= 2; i++) {
-            weaponsOfStage.add(new Sword(instance));
-            weaponsOfStage.add(new Axe(instance));
-            weaponsOfStage.add(new Bow(instance));
-            weaponsOfStage.add(new Gun(instance));
-            weaponsOfStage.add(new Scepter(instance));
-            weaponsOfStage.add(new Wand(instance));
+            weaponsOfStage.add(new Sword());
+            weaponsOfStage.add(new Axe());
+            weaponsOfStage.add(new Bow());
+            weaponsOfStage.add(new Gun());
+            weaponsOfStage.add(new Scepter());
+            weaponsOfStage.add(new Wand());
         }
 
     }
 
-    public void createAccessioresStagePack() {
-        for (int i = 1; i <= 2; i++) {
-            accessoiresListOfStage.add(new Belt(instance));
-            accessoiresListOfStage.add(new Belt(instance));
-            accessoiresListOfStage.add(new Amulet(instance));
-            accessoiresListOfStage.add(new Amulet(instance));
-            accessoiresListOfStage.add(new Ring(instance));
-            accessoiresListOfStage.add(new Ring(instance));
+    public void createAccessoriesStagePack() {
+        for (int i = 1; i <= 4; i++) {
+            accessoiresListOfStage.add(new Belt());
+            accessoiresListOfStage.add(new Amulet());
+            accessoiresListOfStage.add(new Ring());
         }
 
     }

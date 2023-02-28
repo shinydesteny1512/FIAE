@@ -2,7 +2,6 @@ package cgi.game.creations.items.armour;
 
 import cgi.game.creations.Attributes;
 import cgi.game.creations.items.Item;
-import cgi.game.instance.level.GameInstance;
 
 import java.util.Random;
 
@@ -14,10 +13,7 @@ public abstract class Armour extends Item {
     private ArmourTyp armourTyp;
     private Attributes attributes;
 
-    private final GameInstance instance;
-
-    public Armour(final GameInstance instance) {
-        this.instance = instance;
+    public Armour() {
         setDurability(100.0);
         initializeArmour();
     }

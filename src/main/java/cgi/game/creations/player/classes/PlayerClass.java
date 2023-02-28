@@ -32,7 +32,6 @@ public abstract class PlayerClass extends Player {
     public void initializeAttributes() {
         final Random r = new Random();
         int randomNumber = r.nextInt(30) + 10;
-        System.out.println("Randomnumber: " + randomNumber);
         if (this.getAttributeTyp().toString() != null) {
             if (this.getAttributeTyp().toString().equals(Attributes.INTELLIGENCE.toString())) {
                 Integer IntelligenceValue = (int) (randomNumber * 0.5);

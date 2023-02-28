@@ -3,7 +3,6 @@ package cgi.game.creations.items;
 import cgi.game.creations.items.accessiore.Accessoires;
 import cgi.game.creations.items.armour.Armour;
 import cgi.game.creations.items.weapon.Weapon;
-import cgi.game.instance.level.GameInstance;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,9 +15,7 @@ class ItemFactoryTest {
 
     @BeforeEach
     void setUp() {
-        String instanceName = "TESTINSTANCE";
-        GameInstance instance = new GameInstance(instanceName);
-        itemFactory = new ItemFactory(instance);
+        itemFactory = new ItemFactory();
 
     }
 
@@ -64,7 +61,7 @@ class ItemFactoryTest {
 
     @Test
     void createValidAccessioresList() {
-        itemFactory.createAccessioresStagePack();
+        itemFactory.createAccessoriesStagePack();
         List<Accessoires> accessoiresList = itemFactory.getAccessoiresListOfStage();
         Assertions.assertNotNull(accessoiresList);
 
