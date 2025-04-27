@@ -1,15 +1,14 @@
 package cgi.game.menues;
 
+import lombok.Data;
+
+@Data
 public abstract class Window {
 
     private final String windowName;
 
     public Window(final String windowName) {
         this.windowName = windowName;
-    }
-
-    public String getWindowName() {
-        return windowName;
     }
 
     protected void cleanScreen() {

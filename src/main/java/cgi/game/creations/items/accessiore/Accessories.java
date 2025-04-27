@@ -2,15 +2,18 @@ package cgi.game.creations.items.accessiore;
 
 import cgi.game.creations.Attributes;
 import cgi.game.creations.items.Item;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Random;
 
-public abstract class Accessoires extends Item {
+@Setter
+@Getter
+public abstract class Accessories extends Item {
 
     private Attributes attributes;
 
-
-    public Accessoires() {
+    public Accessories() {
         initializeAccessories();
     }
 
@@ -23,11 +26,4 @@ public abstract class Accessoires extends Item {
         }
     }
 
-    public Attributes getAttributes() {
-        return attributes;
-    }
-
-    public void setAttributes(Attributes attributes) {
-        this.attributes = attributes;
-    }
 }

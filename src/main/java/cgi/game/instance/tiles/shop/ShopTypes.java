@@ -4,7 +4,7 @@ public enum ShopTypes {
 
     WEAPON("Weapon"),
     ARMOUR("Armour"),
-    ACCESSOIRES("Jewelery");
+    ACCESSORIES("Jewelery");
 
     private final String shopTyp;
 

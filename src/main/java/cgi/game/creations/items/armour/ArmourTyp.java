@@ -1,5 +1,8 @@
 package cgi.game.creations.items.armour;
 
+import lombok.Getter;
+
+@Getter
 public enum ArmourTyp {
 
     PLATE("PLATE", 30.0, 15.0),
@@ -9,6 +12,7 @@ public enum ArmourTyp {
     private final String armourTyp;
 
     private final double weight;
+
     private final double dmgReduction;
 
     ArmourTyp(String armourTyp, double weight, double dmgReduction) {
@@ -22,11 +26,4 @@ public enum ArmourTyp {
         return armourTyp;
     }
 
-    public double getWeight() {
-        return weight;
-    }
-
-    public double getDmgReduction() {
-        return dmgReduction;
-    }
 }

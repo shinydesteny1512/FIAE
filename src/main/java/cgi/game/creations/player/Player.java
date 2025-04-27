@@ -2,9 +2,7 @@ package cgi.game.creations.player;
 
 import cgi.game.creations.Creature;
 import cgi.game.creations.player.classes.DexPlayerClass;
-import cgi.game.creations.player.classes.IntPlayerClass;
 import cgi.game.creations.player.classes.PlayerClass;
-import cgi.game.creations.player.classes.StrPlayerClass;
 
 import java.util.Arrays;
 
@@ -92,31 +90,5 @@ public class Player extends Creature {
         this.myPlayerClass = myPlayerClass;
     }
 
-    public void debugPlayer() {
-        System.out.printf(String.format("""
-                #######################################################
-                PLAYER NAME: %s
-                PLAYER HEALTH: %s
-                PLAYER MANA: %s
-                PLAYER INITIATIVE: %s
-                PLAYER INITIATIVE BONUS: %s
-                PLAYER CLASS: %s
-                PLAYER CLASS ATTRIBUTE TYPE: %s
-                PLAYER CLASS STRENGTH: %s
-                PLAYER CLASS DEXTERITY: %s
-                PLAYER CLASS INTELLIGENCE: %s
-                PLAYER CLASS WEAPON: %s
-                PLAYER CLASS ARMOUR: %s
-                PLAYER CLASS ACCESSORIES: %s
-                #######################################################
-                """, this.getName(), this.getHealth(), this.getMana(), this.getInitiative(), this.getInitiativeBonus(), this.getMyClass().getPlayerClassName(), this.getMyClass().getAttributeTyp(), this.getMyClass().getStr(), this.getMyClass().getDex(), this.getMyClass().getInt(), this.getInventory().getWeapon().getName(), this.getInventory().getHelm(), this.getInventory().getAccessoires()));
 
-        if (this.getMyClass() instanceof StrPlayerClass strPlayerClass) {
-            System.out.println("STR CLASS: " + strPlayerClass);
-        } else if (this.getMyClass() instanceof DexPlayerClass dexPlayerClass) {
-            System.out.println("DEX CLASS: " + dexPlayerClass);
-        } else if (this.getMyClass() instanceof IntPlayerClass intPlayerClass) {
-            System.out.println("INT CLASS: " + intPlayerClass);
-        }
-    }
 }

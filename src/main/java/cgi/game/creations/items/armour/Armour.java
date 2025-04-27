@@ -2,9 +2,13 @@ package cgi.game.creations.items.armour;
 
 import cgi.game.creations.Attributes;
 import cgi.game.creations.items.Item;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Random;
 
+@Setter
+@Getter
 public abstract class Armour extends Item {
 
     private Double dmgReduction;
@@ -45,43 +49,4 @@ public abstract class Armour extends Item {
 
     }
 
-    public Double getDmgReduction() {
-        return dmgReduction;
-    }
-
-    public void setDmgReduction(Double dmgReduction) {
-        this.dmgReduction = dmgReduction;
-    }
-
-    public Double getDurability() {
-        return durability;
-    }
-
-    public void setDurability(Double durability) {
-        this.durability = durability;
-    }
-
-    public Double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Double weight) {
-        this.weight = weight;
-    }
-
-    public ArmourTyp getArmourTyp() {
-        return armourTyp;
-    }
-
-    public void setArmourTyp(ArmourTyp armourTyp) {
-        this.armourTyp = armourTyp;
-    }
-
-    public Attributes getAttributes() {
-        return attributes;
-    }
-
-    public void setAttributes(Attributes attributes) {
-        this.attributes = attributes;
-    }
 }

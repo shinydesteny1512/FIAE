@@ -1,5 +1,8 @@
 package cgi.game.creations;
 
+import lombok.Getter;
+
+@Getter
 public enum Attributes {
 
     STRENGTH("STRENGTH", 10.0),
@@ -7,6 +10,7 @@ public enum Attributes {
     INTELLIGENCE("INTELLIGENCE", 10.0);
 
     private final String attribute;
+
     private final double Initiative;
 
     Attributes(String attribute, double initiative) {
@@ -20,7 +24,4 @@ public enum Attributes {
         return attribute;
     }
 
-    public double getInitiative() {
-        return Initiative;
-    }
 }

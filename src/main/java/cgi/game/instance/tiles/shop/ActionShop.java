@@ -4,10 +4,12 @@ import cgi.game.creations.items.Item;
 import cgi.game.creations.items.ItemFactory;
 import cgi.game.instance.tiles.Action;
 import cgi.game.instance.tiles.ActionTypes;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public abstract class ActionShop extends Action {
 
     private final List<Item> vendorInventory;
@@ -24,14 +26,7 @@ public abstract class ActionShop extends Action {
         return "showMenu";
     }
 
-    public List<Item> getVendorInventory() {
-        return vendorInventory;
-    }
-
     public void initializeVendorInventory() {
     }
 
-    public ItemFactory getItemFactory() {
-        return itemFactory;
-    }
 }

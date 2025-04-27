@@ -1,7 +1,12 @@
 package cgi.game.creations.items;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Random;
 
+@Setter
+@Getter
 public abstract class Item {
 
     private Rarity rarity;
@@ -31,19 +36,4 @@ public abstract class Item {
 
     }
 
-    public Rarity getRarity() {
-        return rarity;
-    }
-
-    public void setRarity(Rarity rarity) {
-        this.rarity = rarity;
-    }
-
-    public Double getValue() {
-        return value;
-    }
-
-    public void setValue(Double value) {
-        this.value = value;
-    }
 }

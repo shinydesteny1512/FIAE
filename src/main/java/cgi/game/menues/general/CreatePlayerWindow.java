@@ -1,9 +1,11 @@
 package cgi.game.menues.general;
 
+import cgi.game.creations.npcs.evil.Enemy;
 import cgi.game.creations.player.Player;
 import cgi.game.creations.player.classes.PlayerClassFactory;
 import cgi.game.menues.Window;
 import cgi.game.menues.WindowFactory;
+import cgi.game.util.debug.ObjectDebugger;
 
 import java.util.Scanner;
 
@@ -18,7 +20,7 @@ public class CreatePlayerWindow extends Window {
     public void startGame() {
         createPlayer(player);
         cleanScreen();
-        player.debugPlayer(); // will be deleted after player info menue is build in
+        ObjectDebugger.debugPlayer(player); // will be deleted after player info menue is build in
     }
 
     private void createPlayer(Player player) {
@@ -58,18 +60,13 @@ public class CreatePlayerWindow extends Window {
 
         } while (!finishedCreation);
 
-        System.out.println("GAMEMENU");
-        WindowFactory.gameWindow.gameMenu(player);
+        WindowFactory.gameWindow.gameMenu(player, null);
     }
 
     private boolean isCreationFinished(String finished) {
         if (finished.equalsIgnoreCase("yes")) {
             return true;
-        } else if (finished.equalsIgnoreCase("y")) {
-            return true;
-        } else {
-            return false;
-        }
+        } else return finished.equalsIgnoreCase("y");
 
     }
 
@@ -108,27 +105,27 @@ public class CreatePlayerWindow extends Window {
         switch (choice) {
             case "1", "!" -> {
                 System.out.println("You have chosen Warrior! AHU");
-                player.setMyClass(playerClassFactory.createWarrior());
+                playerClassFactory.createWarrior(player);
             }
-            case "2" -> {
+            case "2", "\"" -> {
                 System.out.println("You have chosen Ranger! PEW PEW PEW");
-                player.setMyClass(playerClassFactory.createRanger());
+                playerClassFactory.createRanger(player);
             }
             case "3", "§" -> {
                 System.out.println("You have chosen Mage! PSHIIIIIEAUUU");
-                player.setMyClass(playerClassFactory.createMage());
+                playerClassFactory.createMage(player);
             }
             case "4", "$" -> {
                 System.out.println("You have chosen Barb! RAWWWWRRR");
-                player.setMyClass(playerClassFactory.createBarbarian());
+                playerClassFactory.createBarbarian(player);
             }
             case "5", "%" -> {
                 System.out.println("You have chosen Priest! Wushhh");
-                player.setMyClass(playerClassFactory.createPriest());
+                playerClassFactory.createPriest(player);
             }
             case "6", "&" -> {
                 System.out.println("You have chosen Rogue! Kling Kling");
-                player.setMyClass(playerClassFactory.createRogue());
+                playerClassFactory.createRogue(player);
             }
             default -> System.out.println("Wrong Input, try again");
         }

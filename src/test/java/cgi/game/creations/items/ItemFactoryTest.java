@@ -1,6 +1,6 @@
 package cgi.game.creations.items;
 
-import cgi.game.creations.items.accessiore.Accessoires;
+import cgi.game.creations.items.accessiore.Accessories;
 import cgi.game.creations.items.armour.Armour;
 import cgi.game.creations.items.weapon.Weapon;
 import org.junit.jupiter.api.Assertions;
@@ -48,7 +48,7 @@ class ItemFactoryTest {
 
         for (Armour armour : armourList) {
             System.out.println("####################################################");
-            System.out.println("ARMOUR_ NAME: " + armour.getClass().toString());
+            System.out.println("ARMOUR_ NAME: " + armour.getClass());
             System.out.println("ARMOUR_ RARITY: " + armour.getRarity());
             System.out.println("ARMOUR_ ATTRIBUTE: " + armour.getAttributes());
             System.out.println("ARMOUR_ DURABILITY: " + armour.getDurability());
@@ -62,14 +62,14 @@ class ItemFactoryTest {
     @Test
     void createValidAccessioresList() {
         itemFactory.createAccessoriesStagePack();
-        List<Accessoires> accessoiresList = itemFactory.getAccessoiresListOfStage();
-        Assertions.assertNotNull(accessoiresList);
+        List<Accessories> accessoriesList = itemFactory.getAccessoriesListOfStage();
+        Assertions.assertNotNull(accessoriesList);
 
-        for (Accessoires accessoires : accessoiresList) {
+        for (Accessories accessories : accessoriesList) {
             System.out.println("####################################################");
-            System.out.println("ACCESSIORES_ NAME: " + accessoires.getClass().toString());
-            System.out.println("ACCESSIORES_ RARITY: " + accessoires.getRarity());
-            System.out.println("ACCESSIORES_ ATTRIBUTE: " + accessoires.getAttributes());
+            System.out.println("ACCESSIORES_ NAME: " + accessories.getClass());
+            System.out.println("ACCESSIORES_ RARITY: " + accessories.getRarity());
+            System.out.println("ACCESSIORES_ ATTRIBUTE: " + accessories.getAttributes());
         }
     }
 

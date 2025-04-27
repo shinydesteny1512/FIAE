@@ -1,5 +1,8 @@
 package cgi.game.instance.tiles;
 
+import lombok.Getter;
+
+@Getter
 public abstract class Action {
 
     private final int actionID;
@@ -11,18 +14,6 @@ public abstract class Action {
         this.actionName = actionName;
         this.actionTyp = actionTyp;
 
-    }
-
-    public int getActionID() {
-        return actionID;
-    }
-
-    public String getActionName() {
-        return actionName;
-    }
-
-    public String getActionTyp() {
-        return actionTyp;
     }
 
     public void debugTile() {

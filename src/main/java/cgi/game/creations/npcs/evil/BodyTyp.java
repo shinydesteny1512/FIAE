@@ -1,5 +1,8 @@
 package cgi.game.creations.npcs.evil;
 
+import lombok.Getter;
+
+@Getter
 public enum BodyTyp {
 
     BULKY("BULKY", 150.0, 50.0),
@@ -7,7 +10,9 @@ public enum BodyTyp {
     QUICK("QUICK", 75.0, 125.0);
 
     private final double baseHP;
+
     private final double baseMana;
+
     private final String bodyTyp;
 
     BodyTyp(String bodyTyp, double baseHP, double baseMana) {
@@ -21,11 +26,4 @@ public enum BodyTyp {
         return bodyTyp;
     }
 
-    public double getBaseHP() {
-        return baseHP;
-    }
-
-    public double getBaseMana() {
-        return baseMana;
-    }
 }
