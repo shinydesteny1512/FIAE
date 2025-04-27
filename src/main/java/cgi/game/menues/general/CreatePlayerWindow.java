@@ -1,6 +1,5 @@
 package cgi.game.menues.general;
 
-import cgi.game.creations.npcs.evil.Enemy;
 import cgi.game.creations.player.Player;
 import cgi.game.creations.player.classes.PlayerClassFactory;
 import cgi.game.menues.Window;
@@ -60,7 +59,9 @@ public class CreatePlayerWindow extends Window {
 
         } while (!finishedCreation);
 
-        WindowFactory.gameWindow.gameMenu(player, null);
+
+
+        WindowFactory.gameWindow.gameMenu(player);
     }
 
     private boolean isCreationFinished(String finished) {

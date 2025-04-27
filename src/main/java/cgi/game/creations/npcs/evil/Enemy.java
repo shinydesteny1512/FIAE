@@ -1,30 +1,30 @@
 package cgi.game.creations.npcs.evil;
 
 import cgi.game.creations.Creature;
-import cgi.game.instance.level.GameInstance;
+import cgi.game.instance.level.Game;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 public class Enemy extends Creature {
-    private final GameInstance instance;
+    private final int GameStage;
     private BodyTyp bodyTyp;
 
-    public Enemy(final GameInstance instance) {
-        this.instance = instance;
+    public Enemy(final int GameStage) {
+        this.GameStage = GameStage;
 
     }
 
     @Override
     public void initializeHealth() {
-        this.setHealth(this.getBodyTyp() != null ? GameInstance.gameStage * this.getBodyTyp().getBaseHP() : 75.0);
+        this.setHealth(this.getBodyTyp() != null ? Game.gameStage * this.getBodyTyp().getBaseHP() : 75.0);
 
     }
 
     @Override
     public void initializeMana() {
-        this.setMana(this.getBodyTyp() != null ? GameInstance.gameStage * this.getBodyTyp().getBaseMana() : 25.0);
+        this.setMana(this.getBodyTyp() != null ? Game.gameStage * this.getBodyTyp().getBaseMana() : 25.0);
 
     }
 

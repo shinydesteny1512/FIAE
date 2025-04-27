@@ -1,11 +1,11 @@
 package cgi.game.instance.level;
 
-public class GameInstance {
+public class Game {
 
     public static int gameStage;
     public static String stageTyp;
 
-    public GameInstance() {
+    public Game() {
         gameStage = 0;
         stageTyp = "normal";
     }

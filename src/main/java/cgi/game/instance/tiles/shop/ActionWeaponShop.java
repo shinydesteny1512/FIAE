@@ -3,9 +3,11 @@ package cgi.game.instance.tiles.shop;
 import cgi.game.creations.items.Item;
 import cgi.game.creations.items.weapon.Weapon;
 
+import java.util.UUID;
+
 public class ActionWeaponShop extends ActionShop {
 
-    public ActionWeaponShop(int actionID, String actionName) {
+    public ActionWeaponShop(UUID actionID, String actionName) {
         super(actionID, actionName);
         this.getItemFactory().createWeaponStagePack();
     }

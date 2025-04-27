@@ -4,6 +4,7 @@ import cgi.game.creations.player.Player;
 import cgi.game.creations.player.classes.DexPlayerClass;
 import cgi.game.creations.player.classes.IntPlayerClass;
 import cgi.game.creations.player.classes.StrPlayerClass;
+import cgi.game.instance.tiles.Action;
 
 public class ObjectDebugger {
 
@@ -48,6 +49,15 @@ public class ObjectDebugger {
         } else if (player.getMyClass() instanceof IntPlayerClass intPlayerClass) {
             System.out.println("INT CLASS: " + intPlayerClass);
         }
+    }
+
+    public static void debugTile(Action action) {
+        System.out.println("################################");
+        System.out.println("ActionID: " + action.getActionID());
+        System.out.println("ActionName: " + action.getActionName());
+        System.out.println("ActionTyp: " + action.getActionTyp());
+        System.out.println("################################");
+
     }
 
 }

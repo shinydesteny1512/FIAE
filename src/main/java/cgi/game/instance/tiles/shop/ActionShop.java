@@ -8,6 +8,7 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 public abstract class ActionShop extends Action {
@@ -15,7 +16,7 @@ public abstract class ActionShop extends Action {
     private final List<Item> vendorInventory;
     private final ItemFactory itemFactory;
 
-    public ActionShop(int actionID, String actionName) {
+    public ActionShop(UUID actionID, String actionName) {
         super(actionID, actionName, ActionTypes.SHOP.toString());
         this.vendorInventory = new ArrayList<>();
         this.itemFactory = new ItemFactory();
@@ -23,7 +24,7 @@ public abstract class ActionShop extends Action {
     }
 
     public String showMenu() {
-        return "showMenu";
+        return "";
     }
 
     public void initializeVendorInventory() {

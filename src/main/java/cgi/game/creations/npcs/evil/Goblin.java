@@ -1,10 +1,8 @@
 package cgi.game.creations.npcs.evil;
 
-import cgi.game.instance.level.GameInstance;
+public class Goblin extends Enemy {
 
-public class Goblin extends Enemy{
-
-    public Goblin(GameInstance instance) {
+    public Goblin(int instance) {
         super(instance);
     }
 
