@@ -1,6 +1,7 @@
 package cgi.game.instance.tiles.shop;
 
 import cgi.game.creations.items.Item;
+import cgi.game.creations.items.ItemFactory;
 import cgi.game.creations.items.weapon.Weapon;
 
 import java.util.UUID;
@@ -29,7 +30,7 @@ public class ActionWeaponShop extends ActionShop {
 
     @Override
     public void initializeVendorInventory() {
-        for (Weapon weapon : this.getItemFactory().getWeaponsOfStage()) {
+        for (Weapon weapon : ItemFactory.getWeaponList()) {
             this.getVendorInventory().add(weapon);
         }
     }

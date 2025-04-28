@@ -16,10 +16,10 @@ public class ActionFight extends Action {
     public void battle(Creature player, Creature enemy){
         while (player.getHealth() >= 0 || enemy.getHealth() >= 0){
             if (player.getHealth() <= 0){
-                System.out.println("Looser");
+                System.out.println("\nLooser");
                 break;
             } else if (enemy.getHealth() <= 0) {
-                System.out.println("Winner");
+                System.out.println("\nWinner");
                 break;
             } else {
                 this.fight(player, enemy);

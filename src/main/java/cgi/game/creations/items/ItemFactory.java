@@ -21,15 +21,27 @@ import java.util.List;
 
 @Getter
 public class ItemFactory {
-    private final List<Armour> armourListOfStage;
-    private final List<Weapon> weaponsOfStage;
-    private final List<Accessories> accessoriesListOfStage;
+    private static final List<Armour> armourListOfStage = new ArrayList<>();
+    private static final List<Weapon> weaponsOfStage = new ArrayList<>();
+    private static final List<Accessories> accessoriesListOfStage = new ArrayList<>();
 
     public ItemFactory() {
-        this.armourListOfStage = new ArrayList<>();
-        this.weaponsOfStage = new ArrayList<>();
-        this.accessoriesListOfStage = new ArrayList<>();
+        createWeaponStagePack();
+        createArmourStagePack();
+        createAccessoriesStagePack();
 
+    }
+
+    public static List<Weapon> getWeaponList(){
+        return weaponsOfStage;
+    }
+
+    public static List<Accessories> getAccessoriesList(){
+        return accessoriesListOfStage;
+    }
+
+    public static List<Armour> getArmourList(){
+        return armourListOfStage;
     }
 
     public void createArmourStagePack() {

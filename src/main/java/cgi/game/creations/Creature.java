@@ -8,9 +8,9 @@ import lombok.Setter;
 @Setter
 public abstract class Creature {
     private String name;
-    private Double health;
-    private Double mana;
-    private Double initiative;
+    private double health;
+    private double mana;
+    private double initiative;
     private final Inventory inventory;
 
     public Creature() {

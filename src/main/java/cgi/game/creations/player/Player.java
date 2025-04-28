@@ -75,7 +75,7 @@ public class Player extends Creature {
 
     public double getInitiativeBonus() {
 
-        if (this.getInitiative() != null) {
+        if (this.getInitiative() != 0) {
             return Math.round(this.getInitiative() - (this.getInitiative() / dexInitiativeMultiplier));
         } else {
             return 0;

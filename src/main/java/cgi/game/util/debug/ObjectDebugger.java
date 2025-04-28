@@ -1,5 +1,6 @@
 package cgi.game.util.debug;
 
+import cgi.game.creations.npcs.evil.Enemy;
 import cgi.game.creations.player.Player;
 import cgi.game.creations.player.classes.DexPlayerClass;
 import cgi.game.creations.player.classes.IntPlayerClass;
@@ -49,6 +50,38 @@ public class ObjectDebugger {
         } else if (player.getMyClass() instanceof IntPlayerClass intPlayerClass) {
             System.out.println("INT CLASS: " + intPlayerClass);
         }
+    }
+
+    public static void debugEnemy(Enemy enemy){
+        System.out.printf(String.format("""
+                        #######################################################
+                        ENEMY NAME: %s
+                        ENEMY HEALTH: %s
+                        ENEMY MANA: %s
+                        ENEMY INITIATIVE: %s
+                        ENEMY CLASS: %s
+                        ENEMY CLASS HP MULTI: %s
+                        ENEMY CLASS MANA MULTI: %s
+                        ENEMY CLASS INI MULTI: %s
+                        ENEMY CLASS WEAPON: %s
+                        ENEMY CLASS HELM: %s
+                        ENEMY CLASS ARMOUR: %s
+                        ENEMY CLASS ACCESSORIES: %s
+                        #######################################################
+                        """,
+            enemy.getName(),
+            enemy.getHealth(),
+            enemy.getMana(),
+            enemy.getInitiative(),
+            enemy.getEnemyClass().getEnemyClass(),
+            enemy.getEnemyClass().getHpMultiplier(),
+            enemy.getEnemyClass().getManaMultiplier(),
+            enemy.getEnemyClass().getInitiativeMultiplier(),
+            enemy.getInventory().getWeapon(),
+            enemy.getInventory().getHelm(),
+            enemy.getInventory().getChest(),
+            enemy.getInventory().getAccessories()));
+
     }
 
     public static void debugTile(Action action) {

@@ -1,11 +1,14 @@
 package cgi.game.menues.general;
 
+import cgi.game.creations.items.ItemFactory;
 import cgi.game.menues.Window;
 import cgi.game.menues.WindowFactory;
 
 import java.util.Scanner;
 
 public class MainWindow extends Window {
+
+    private final static ItemFactory ITEM_FACTORY = new ItemFactory();
 
     public MainWindow(final String name) {
         super(name);

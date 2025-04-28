@@ -22,7 +22,7 @@ class ItemFactoryTest {
     @Test
     void createValidWeaponList() {
         itemFactory.createWeaponStagePack();
-        List<Weapon> weaponList = itemFactory.getWeaponsOfStage();
+        List<Weapon> weaponList = ItemFactory.getWeaponList();
         Assertions.assertNotNull(weaponList);
 
         for (Weapon weapon : weaponList) {

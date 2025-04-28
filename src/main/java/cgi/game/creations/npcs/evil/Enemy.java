@@ -7,9 +7,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Enemy extends Creature {
+public abstract class Enemy extends Creature {
     private final int GameStage;
     private BodyTyp bodyTyp;
+    private EnemyClass enemyClass;
 
     public Enemy(final int GameStage) {
         this.GameStage = GameStage;
@@ -18,18 +19,24 @@ public class Enemy extends Creature {
 
     @Override
     public void initializeHealth() {
-        this.setHealth(this.getBodyTyp() != null ? Game.gameStage * this.getBodyTyp().getBaseHP() : 75.0);
+        this.setHealth(this.getBodyTyp() != null ?
+            (GameStage * this.getBodyTyp().getBaseHP()) * this.getEnemyClass().getHpMultiplier()
+            : 75.0);
 
     }
 
     @Override
     public void initializeMana() {
-        this.setMana(this.getBodyTyp() != null ? Game.gameStage * this.getBodyTyp().getBaseMana() : 25.0);
+        this.setMana(this.getBodyTyp() != null ?
+            (GameStage * this.getBodyTyp().getBaseMana()) * this.getEnemyClass().getManaMultiplier()
+            : 25.0);
 
     }
 
     @Override
     public void initializeInitiative() {
-        super.initializeInitiative();
+        this.setInitiative(this.getBodyTyp() != null ?
+            this.getBodyTyp().getInitiative() * this.getEnemyClass().getInitiativeMultiplier()
+            : 15);
     }
 }
