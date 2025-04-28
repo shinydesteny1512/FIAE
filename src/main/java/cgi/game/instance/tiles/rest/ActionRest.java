@@ -6,8 +6,8 @@ import cgi.game.instance.tiles.ActionTypes;
 import java.util.UUID;
 
 public class ActionRest extends Action {
-    public ActionRest(UUID actionID, String actionName) {
-        super(actionID, actionName, ActionTypes.REST.toString());
-    }
+	public ActionRest(UUID actionID, String actionName) {
+		super(actionID, actionName, ActionTypes.REST.toString());
+	}
 
 }

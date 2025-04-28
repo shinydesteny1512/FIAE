@@ -14,21 +14,21 @@ import java.util.List;
 @Getter
 @Setter
 public class Inventory {
-    private final List<Item> backspace;
-    private Weapon weapon;
-    private Helm helm;
-    private Chest chest;
-    private Accessories accessories;
+	private final List<Item> backspace;
+	private Weapon weapon;
+	private Helm helm;
+	private Chest chest;
+	private Accessories accessories;
 
-    public Inventory(Weapon weapon, Helm helm, Chest chest, Accessories accessories) {
-        this.chest = chest;
-        this.weapon = weapon;
-        this.helm = helm;
-        this.accessories = accessories;
-        this.backspace = new ArrayList<>();
-    }
+	public Inventory(Weapon weapon, Helm helm, Chest chest, Accessories accessories) {
+		this.chest = chest;
+		this.weapon = weapon;
+		this.helm = helm;
+		this.accessories = accessories;
+		this.backspace = new ArrayList<>();
+	}
 
-    public void addItemToInventory(Item item) {
-        backspace.add(item);
-    }
+	public void addItemToInventory(Item item) {
+		backspace.add(item);
+	}
 }

@@ -4,8 +4,8 @@ import cgi.game.creations.Attributes;
 
 public class Dwarf extends Races {
 
-    public Dwarf() {
-        super(Attributes.STRENGTH);
-    }
+	public Dwarf() {
+		super(Attributes.STRENGTH);
+	}
 
 }

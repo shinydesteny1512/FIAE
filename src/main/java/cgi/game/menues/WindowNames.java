@@ -2,24 +2,23 @@ package cgi.game.menues;
 
 public enum WindowNames {
 
-    MAINMENU("Main Menu"),
+	MAIN_MENU("Main Menu"),
+	GAME_WINDOW("Game Window"),
+	CREATE_PLAYER_MENU("Create Player"),
+	PLAYER_INFO_MENU("Player Information"),
+	FIGHT_MENU("Fight"),
+	SHOP_MENU("Shop"),
+	REST_MENU("Rest"),
+	EVENT_MENU("Event");
 
-    GAMEWINDOW("Game Window"),
-    CREATEPLAYERMENU("Create Player"),
-    PLAYERINFOMENU("Player Information"),
-    FIGHTMENU("Fight"),
-    SHOPMENU("Shop"),
-    RESTMENU("Rest"),
-    EVENTMENU("Event");
+	private final String menuName;
 
-    private final String menuName;
+	WindowNames(String menuName) {
+		this.menuName = menuName;
+	}
 
-    WindowNames(String menuName) {
-        this.menuName = menuName;
-    }
-
-    @Override
-    public String toString() {
-        return menuName;
-    }
+	@Override
+	public String toString() {
+		return menuName;
+	}
 }

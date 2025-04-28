@@ -7,13 +7,13 @@ import lombok.Setter;
 @Setter
 @Getter
 public abstract class Races {
-    private String bodyHeight;
-    private Integer age;
-    private String bodyAge;
-    private Attributes attributes;
+	private String bodyHeight;
+	private Integer age;
+	private String bodyAge;
+	private Attributes attributes;
 
-    public Races(Attributes attributes) {
-        this.attributes = attributes;
-    }
+	public Races(Attributes attributes) {
+		this.attributes = attributes;
+	}
 
 }

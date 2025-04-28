@@ -5,10 +5,10 @@ import cgi.game.creations.items.weapon.Weapon;
 
 public class Sword extends Weapon {
 
-    public Sword() {
-        this.setAttackSpeed(1.6);
-        this.setAttributeBonus(Attributes.DEXTERITY);
-        super.initializeDamage();
-    }
+	public Sword() {
+		this.setAttackSpeed(1.6);
+		this.setAttributeBonus(Attributes.DEXTERITY);
+		super.initializeDamage();
+	}
 
 }

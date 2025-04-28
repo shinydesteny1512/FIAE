@@ -7,10 +7,10 @@ import java.util.UUID;
 
 class ActionRestTest {
 
-    @Test
-    void createPositiveActionRestTile() {
-        ActionRest actionRest = new ActionRest(new UUID(1L, 1L), "resting");
-        ObjectDebugger.debugTile(actionRest);
-    }
+	@Test
+	void createPositiveActionRestTile() {
+		ActionRest actionRest = new ActionRest(UUID.randomUUID(), "resting");
+		ObjectDebugger.debugTile(actionRest);
+	}
 
 }

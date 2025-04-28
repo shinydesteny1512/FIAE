@@ -4,8 +4,8 @@ import cgi.game.creations.Attributes;
 
 public class Elves extends Races {
 
-    public Elves() {
-        super(Attributes.DEXTERITY);
-    }
+	public Elves() {
+		super(Attributes.DEXTERITY);
+	}
 
 }

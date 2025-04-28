@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import java.util.UUID;
 
 class ActionFightTest {
-    @Test
-    void createPositiveActionFightTile() {
-        ActionFight actionFight = new ActionFight(new UUID(1L, 1L), "Desert");
-        ObjectDebugger.debugTile(actionFight);
+	@Test
+	void createPositiveActionFightTile() {
+		ActionFight actionFight = new ActionFight(UUID.randomUUID(), "Desert");
+		ObjectDebugger.debugTile(actionFight);
 
-    }
+	}
 }

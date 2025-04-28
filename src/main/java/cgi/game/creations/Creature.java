@@ -7,23 +7,23 @@ import lombok.Setter;
 @Getter
 @Setter
 public abstract class Creature {
-    private String name;
-    private double health;
-    private double mana;
-    private double initiative;
-    private final Inventory inventory;
+	private final Inventory inventory;
+	private String name;
+	private double health;
+	private double mana;
+	private double initiative;
 
-    public Creature() {
-        this.inventory = new Inventory(null, null, null, null);
-    }
+	public Creature() {
+		this.inventory = new Inventory(null, null, null, null);
+	}
 
-    public void initializeHealth() {
-    }
+	public void initializeHealth() {
+	}
 
-    public void initializeMana() {
-    }
+	public void initializeMana() {
+	}
 
-    public void initializeInitiative() {
-    }
+	public void initializeInitiative() {
+	}
 
 }

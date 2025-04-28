@@ -13,21 +13,21 @@ import java.util.UUID;
 @Getter
 public abstract class ActionShop extends Action {
 
-    private final List<Item> vendorInventory;
-    private final ItemFactory itemFactory;
+	private final List<Item> vendorInventory;
+	private final ItemFactory itemFactory;
 
-    public ActionShop(UUID actionID, String actionName) {
-        super(actionID, actionName, ActionTypes.SHOP.toString());
-        this.vendorInventory = new ArrayList<>();
-        this.itemFactory = new ItemFactory();
+	public ActionShop(UUID actionID, String actionName) {
+		super(actionID, actionName, ActionTypes.SHOP.toString());
+		this.vendorInventory = new ArrayList<>();
+		this.itemFactory = new ItemFactory();
 
-    }
+	}
 
-    public String showMenu() {
-        return "";
-    }
+	public String showMenu() {
+		return "";
+	}
 
-    public void initializeVendorInventory() {
-    }
+	public void initializeVendorInventory() {
+	}
 
 }
