@@ -22,7 +22,7 @@ public abstract class Window {
 				System.out.print("\033]0;" + this.windowName + "\007");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 

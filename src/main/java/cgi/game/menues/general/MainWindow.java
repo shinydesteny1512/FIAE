@@ -1,7 +1,7 @@
 package cgi.game.menues.general;
 
 import cgi.game.menues.Window;
-import cgi.game.menues.WindowFactory;
+import cgi.game.menues.GameFactory;
 
 import java.util.Scanner;
 
@@ -30,7 +30,7 @@ public class MainWindow extends Window {
 
 		switch (menuChosen) {
 			case "1", "!" -> {
-				WindowFactory.createPlayerWindow.startGame();
+				GameFactory.createPlayerWindow.startGame();
 				System.out.println("Game Started");
 
 			}

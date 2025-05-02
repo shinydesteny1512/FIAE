@@ -2,9 +2,6 @@ package cgi.game.util.debug;
 
 import cgi.game.creations.npcs.evil.Enemy;
 import cgi.game.creations.player.Player;
-import cgi.game.creations.player.classes.DexPlayerClass;
-import cgi.game.creations.player.classes.IntPlayerClass;
-import cgi.game.creations.player.classes.StrPlayerClass;
 import cgi.game.instance.tiles.Action;
 
 public class ObjectDebugger {
@@ -17,6 +14,7 @@ public class ObjectDebugger {
 										PLAYER MANA: %s
 										PLAYER INITIATIVE: %s
 										PLAYER INITIATIVE BONUS: %s
+										PLAYER RACE : %s
 										PLAYER CLASS: %s
 										PLAYER CLASS ATTRIBUTE TYPE: %s
 										PLAYER CLASS STRENGTH: %s
@@ -33,23 +31,17 @@ public class ObjectDebugger {
 						player.getMana(),
 						player.getInitiative(),
 						player.getInitiativeBonus(),
-						player.getMyClass().getPlayerClassName(),
-						player.getMyClass().getAttributeTyp(),
-						player.getMyClass().getStr(),
-						player.getMyClass().getDex(),
-						player.getMyClass().getInt(),
+						player.getRace().getName(),
+						player.getMyPlayerClass().getPlayerClassName(),
+						player.getMyPlayerClass().getAttributeTyp(),
+						player.getMyPlayerClass().getStr(),
+						player.getMyPlayerClass().getDex(),
+						player.getMyPlayerClass().getInt(),
 						player.getInventory().getWeapon(),
 						player.getInventory().getHelm(),
 						player.getInventory().getChest(),
 						player.getInventory().getAccessories()));
 
-		if (player.getMyClass() instanceof StrPlayerClass strPlayerClass) {
-			System.out.println("STR CLASS: " + strPlayerClass);
-		} else if (player.getMyClass() instanceof DexPlayerClass dexPlayerClass) {
-			System.out.println("DEX CLASS: " + dexPlayerClass);
-		} else if (player.getMyClass() instanceof IntPlayerClass intPlayerClass) {
-			System.out.println("INT CLASS: " + intPlayerClass);
-		}
 	}
 
 	public static void debugEnemy(Enemy enemy) {

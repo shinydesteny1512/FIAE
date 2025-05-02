@@ -3,12 +3,18 @@ package cgi.game.creations.player;
 import cgi.game.creations.Creature;
 import cgi.game.creations.player.classes.DexPlayerClass;
 import cgi.game.creations.player.classes.PlayerClass;
+import cgi.game.creations.player.races.Race;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Arrays;
 
+@Getter
+@Setter
 public class Player extends Creature {
 	private final double dexInitiativeMultiplier = 1.1;
 	private PlayerClass myPlayerClass;
+	private Race race;
 
 	@Override
 	public void initializeHealth() {
@@ -23,11 +29,11 @@ public class Player extends Creature {
 		try {
 			switch (this.myPlayerClass.getAttributeTyp()) {
 				case STRENGTH ->
-								this.setHealth(getMyClass() != null ? strBaseHealth + (getMyClass().getStr() * strHealthMultiplier) : 0);
+								this.setHealth(this.getMyPlayerClass() != null ? strBaseHealth + (this.getMyPlayerClass().getStr() * strHealthMultiplier) : 0);
 				case DEXTERITY ->
-								this.setHealth(getMyClass() != null ? dexBaseHealth + (getMyClass().getStr() * dexHealthMultiplier) : 0);
+								this.setHealth(this.getMyPlayerClass() != null ? dexBaseHealth + (this.getMyPlayerClass().getStr() * dexHealthMultiplier) : 0);
 				case INTELLIGENCE ->
-								this.setHealth(getMyClass() != null ? intBaseHealth + (getMyClass().getStr() * intHealthMultiplier) : 0);
+								this.setHealth(this.getMyPlayerClass() != null ? intBaseHealth + (this.getMyPlayerClass().getStr() * intHealthMultiplier) : 0);
 				default -> throw new Exception();
 			}
 		} catch (Exception e) {
@@ -48,11 +54,11 @@ public class Player extends Creature {
 		try {
 			switch (this.myPlayerClass.getAttributeTyp()) {
 				case STRENGTH ->
-								this.setMana(getMyClass() != null ? strBaseMana + (this.getMyClass().getInt() * strManaMultiplier) : 0);
+								this.setMana(this.getMyPlayerClass() != null ? strBaseMana + (this.getMyPlayerClass().getInt() * strManaMultiplier) : 0);
 				case DEXTERITY ->
-								this.setMana(getMyClass() != null ? dexBaseMana + (this.getMyClass().getInt() * dexManaMultiplier) : 0);
+								this.setMana(this.getMyPlayerClass() != null ? dexBaseMana + (this.getMyPlayerClass().getInt() * dexManaMultiplier) : 0);
 				case INTELLIGENCE ->
-								this.setMana(getMyClass() != null ? intBaseMana + (this.getMyClass().getInt() * intManaMultiplier) : 0);
+								this.setMana(this.getMyPlayerClass() != null ? intBaseMana + (this.getMyPlayerClass().getInt() * intManaMultiplier) : 0);
 				default -> throw new Exception();
 			}
 		} catch (Exception e) {
@@ -62,13 +68,14 @@ public class Player extends Creature {
 
 	@Override
 	public void initializeInitiative() {
-		if (this.getMyClass() != null) {
-			if (this.getMyClass() instanceof DexPlayerClass) {
-				this.setInitiative(((this.getMyClass().getDex() * 2.5) + (this.getMyClass().getDex() * dexInitiativeMultiplier)));
+		if (this.getMyPlayerClass() != null) {
+			if (this.getMyPlayerClass() instanceof DexPlayerClass) {
+				this.setInitiative(((this.getMyPlayerClass().getDex() * 2.5) + (this.getMyPlayerClass().getDex() * dexInitiativeMultiplier)));
 			} else {
 				double nonDexInitiativeMultiplier = 1.0;
-				this.setInitiative(((this.getMyClass().getDex() * 2.5) + (this.getMyClass().getDex() * nonDexInitiativeMultiplier)));
+				this.setInitiative(((this.getMyPlayerClass().getDex() * 2.5) + (this.getMyPlayerClass().getDex() * nonDexInitiativeMultiplier)));
 			}
+
 		}
 
 	}
@@ -81,14 +88,5 @@ public class Player extends Creature {
 			return 0;
 		}
 	}
-
-	public PlayerClass getMyClass() {
-		return myPlayerClass;
-	}
-
-	public void setMyClass(PlayerClass myPlayerClass) {
-		this.myPlayerClass = myPlayerClass;
-	}
-
 
 }

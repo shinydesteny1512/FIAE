@@ -2,10 +2,11 @@ package cgi.game.creations.player.races;
 
 import cgi.game.creations.Attributes;
 
-public class Elves extends Races {
+public class Elf extends Race {
 
-	public Elves() {
+	public Elf() {
 		super(Attributes.DEXTERITY);
+		setName("Elf");
 	}
 
 }

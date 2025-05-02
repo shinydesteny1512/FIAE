@@ -1,12 +1,12 @@
 package cgi.game.controller;
 
-import cgi.game.menues.WindowFactory;
+import cgi.game.menues.GameFactory;
 import cgi.game.menues.general.MainWindow;
 
 public class Runner {
 
 	public static void main(String[] args) {
-		MainWindow mainWindow = WindowFactory.mainWindow;
+		MainWindow mainWindow = GameFactory.mainWindow;
 		mainWindow.startWindow();
 
 	}

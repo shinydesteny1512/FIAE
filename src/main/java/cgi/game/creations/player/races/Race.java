@@ -6,13 +6,14 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public abstract class Races {
+public abstract class Race {
 	private String bodyHeight;
 	private Integer age;
 	private String bodyAge;
 	private Attributes attributes;
+	private String name;
 
-	public Races(Attributes attributes) {
+	public Race(Attributes attributes) {
 		this.attributes = attributes;
 	}
 

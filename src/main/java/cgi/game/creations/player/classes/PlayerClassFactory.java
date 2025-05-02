@@ -8,6 +8,7 @@ import cgi.game.creations.items.weapon.caster.Wand;
 import cgi.game.creations.items.weapon.meele.Axe;
 import cgi.game.creations.items.weapon.meele.Sword;
 import cgi.game.creations.items.weapon.range.Bow;
+import cgi.game.creations.items.weapon.range.Gun;
 import cgi.game.creations.player.Player;
 
 public class PlayerClassFactory {
@@ -20,7 +21,7 @@ public class PlayerClassFactory {
 		intClass.setPlayerClassName("Mage");
 		intClass.setAttributeTyp(Attributes.INTELLIGENCE);
 		intClass.initializeAttributes();
-		player.setMyClass(intClass);
+		player.setMyPlayerClass(intClass);
 		setHelmAndChest(player);
 		player.getInventory().setWeapon(new Wand());
 
@@ -31,7 +32,7 @@ public class PlayerClassFactory {
 		strClass.setPlayerClassName("Warrior");
 		strClass.setAttributeTyp(Attributes.STRENGTH);
 		strClass.initializeAttributes();
-		player.setMyClass(strClass);
+		player.setMyPlayerClass(strClass);
 		setHelmAndChest(player);
 		player.getInventory().setWeapon(new Axe());
 
@@ -42,7 +43,7 @@ public class PlayerClassFactory {
 		dexClass.setPlayerClassName("Ranger");
 		dexClass.setAttributeTyp(Attributes.DEXTERITY);
 		dexClass.initializeAttributes();
-		player.setMyClass(dexClass);
+		player.setMyPlayerClass(dexClass);
 		setHelmAndChest(player);
 		player.getInventory().setWeapon(new Bow());
 
@@ -53,7 +54,7 @@ public class PlayerClassFactory {
 		intClass.setPlayerClassName("Priest");
 		intClass.setAttributeTyp(Attributes.INTELLIGENCE);
 		intClass.initializeAttributes();
-		player.setMyClass(intClass);
+		player.setMyPlayerClass(intClass);
 		setHelmAndChest(player);
 		player.getInventory().setWeapon(new Scepter());
 
@@ -64,9 +65,9 @@ public class PlayerClassFactory {
 		dexClass.setPlayerClassName("Rogue");
 		dexClass.setAttributeTyp(Attributes.DEXTERITY);
 		dexClass.initializeAttributes();
-		player.setMyClass(dexClass);
+		player.setMyPlayerClass(dexClass);
 		setHelmAndChest(player);
-		player.getInventory().setWeapon(new Sword());
+		player.getInventory().setWeapon(new Gun());
 
 	}
 
@@ -75,7 +76,7 @@ public class PlayerClassFactory {
 		strClass.setPlayerClassName("Barbarian");
 		strClass.setAttributeTyp(Attributes.STRENGTH);
 		strClass.initializeAttributes();
-		player.setMyClass(strClass);
+		player.setMyPlayerClass(strClass);
 		setHelmAndChest(player);
 		player.getInventory().setWeapon(new Sword());
 

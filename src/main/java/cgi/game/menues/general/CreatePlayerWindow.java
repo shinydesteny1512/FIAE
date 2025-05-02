@@ -2,31 +2,36 @@ package cgi.game.menues.general;
 
 import cgi.game.creations.player.Player;
 import cgi.game.creations.player.classes.PlayerClassFactory;
+import cgi.game.creations.player.races.Dwarf;
+import cgi.game.creations.player.races.Elf;
+import cgi.game.creations.player.races.Human;
 import cgi.game.menues.Window;
-import cgi.game.menues.WindowFactory;
+import cgi.game.menues.GameFactory;
 import cgi.game.util.debug.ObjectDebugger;
 
 import java.util.Scanner;
 
 public class CreatePlayerWindow extends Window {
-	private final Player player;
+//	private final Player player;
+	final Scanner sc = new Scanner(System.in);
+
 
 	public CreatePlayerWindow(String windowName) {
 		super(windowName);
-		this.player = new Player();
+//		this.player = new Player();
 	}
 
 	public void startGame() {
-		createPlayer(player);
-		ObjectDebugger.debugPlayer(player); // will be deleted after player info menue is build in
+		createPlayer(GameFactory.player);
+		ObjectDebugger.debugPlayer(GameFactory.player); // will be deleted after player info menu is build in
 	}
 
 	private void createPlayer(Player player) {
 		boolean finishedCreation;
 		boolean nameChosen;
 		boolean classChosen;
+		boolean raceChosen;
 
-		final Scanner sc = new Scanner(System.in);
 
 		do {
 			System.out.println("Welcome to the World of [Uniting Worlds] \nWhat's your name?");
@@ -35,6 +40,22 @@ public class CreatePlayerWindow extends Window {
 				nameChosen = isNameChosen(player, nameInput);
 
 			} while (!nameChosen);
+
+			System.out.println("So, {" + player.getName() + "}, which race do you want to play?");
+			do {
+				System.out.println("""
+								Press the Number in [] to choose your race:
+								[1] Human
+								[2] Elf
+								[3] Dwarf
+								""");
+
+				System.out.println("Are you happy with your choice?");
+				final String raceAccepted = sc.next();
+				raceChosen = isRaceChosen(player, raceAccepted);
+
+			} while (!raceChosen);
+
 
 			System.out.println("So, {" + player.getName() + "}, which class do you want to play?");
 			do {
@@ -58,10 +79,34 @@ public class CreatePlayerWindow extends Window {
 
 		} while (!finishedCreation);
 
-		WindowFactory.gameWindow.gameMenu(player, sc);
+		GameFactory.gameWindow.gameMenu(sc);
+	}
+
+	private boolean isRaceChosen(Player player, String raceAccepted) {
+		switch (raceAccepted) {
+			case "1", "!" -> {
+				player.setRace(new Human());
+				return true;
+			}
+			case "2", "\"" -> {
+				player.setRace(new Elf());
+				return true;
+			}
+			case "3", "§" -> {
+				player.setRace(new Dwarf());
+				return true;
+			}
+			default -> {
+				return false;
+			}
+		}
 	}
 
 	private boolean isCreationFinished(String finished) {
+		GameFactory.player.initializeHealth();
+		GameFactory.player.initializeMana();
+		GameFactory.player.initializeInitiative();
+
 		if (finished.equalsIgnoreCase("yes")) {
 			return true;
 		} else return finished.equalsIgnoreCase("y");
@@ -70,13 +115,8 @@ public class CreatePlayerWindow extends Window {
 
 	private boolean isClassChosen(Player player, String classAccepted) {
 		setPLAYERClass(player, classAccepted);
-		player.initializeHealth();
-		player.initializeMana();
-		player.initializeInitiative();
-
 		System.out.println("Are you sure about your choice?");
-		Scanner scanner = new Scanner(System.in);
-		String playerClassAccepted = scanner.next();
+		String playerClassAccepted = sc.next();
 		if (playerClassAccepted.equals("yes") || playerClassAccepted.equals("y")) {
 			return true;
 		} else {
@@ -88,8 +128,7 @@ public class CreatePlayerWindow extends Window {
 	private boolean isNameChosen(Player player, String nameInput) {
 		player.setName(nameInput);
 		System.out.println("So your name is {" + player.getName() + "}? Are you sure about that?");
-		Scanner scanner = new Scanner(System.in);
-		String playerNameAccepted = scanner.next();
+		String playerNameAccepted = sc.next();
 		if (playerNameAccepted.equals("yes") || playerNameAccepted.equals("y")) {
 			return true;
 		} else {
