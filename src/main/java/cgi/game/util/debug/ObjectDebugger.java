@@ -8,7 +8,7 @@ public class ObjectDebugger {
 
 	public static void debugPlayer(Player player) {
 		System.out.printf(String.format("""
-										#######################################################
+										\n#######################################################
 										PLAYER NAME: %s
 										PLAYER HEALTH: %s
 										PLAYER MANA: %s
@@ -23,7 +23,9 @@ public class ObjectDebugger {
 										PLAYER CLASS WEAPON: %s
 										PLAYER CLASS HELM: %s
 										PLAYER CLASS ARMOUR: %s
-										PLAYER CLASS ACCESSORIES: %s
+										PLAYER CLASS AMULET: %s
+										PLAYER CLASS RING: %s
+										PLAYER CLASS BELT: %s
 										#######################################################
 										""",
 						player.getName(),
@@ -40,7 +42,9 @@ public class ObjectDebugger {
 						player.getInventory().getWeapon(),
 						player.getInventory().getHelm(),
 						player.getInventory().getChest(),
-						player.getInventory().getAccessories()));
+						player.getInventory().getAmulet(),
+						player.getInventory().getRing(),
+						player.getInventory().getBelt()));
 
 	}
 
@@ -58,7 +62,9 @@ public class ObjectDebugger {
 										ENEMY CLASS WEAPON: %s
 										ENEMY CLASS HELM: %s
 										ENEMY CLASS ARMOUR: %s
-										ENEMY CLASS ACCESSORIES: %s
+										ENEMY CLASS AMULET: %s
+										ENEMY CLASS RING: %s
+										ENEMY CLASS BELT: %s
 										#######################################################
 										""",
 						enemy.getName(),
@@ -72,7 +78,9 @@ public class ObjectDebugger {
 						enemy.getInventory().getWeapon(),
 						enemy.getInventory().getHelm(),
 						enemy.getInventory().getChest(),
-						enemy.getInventory().getAccessories()));
+						enemy.getInventory().getAmulet(),
+						enemy.getInventory().getRing(),
+						enemy.getInventory().getBelt()));
 
 	}
 

@@ -14,7 +14,7 @@ public abstract class Creature {
 	private double initiative;
 
 	public Creature() {
-		this.inventory = new Inventory(null, null, null, null);
+		this.inventory = new Inventory(null, null, null, null, null, null);
 	}
 
 	public void initializeHealth() {

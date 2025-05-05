@@ -1,6 +1,7 @@
 package cgi.game.creations.player.classes;
 
 import cgi.game.creations.Attributes;
+import cgi.game.creations.items.ItemFactory;
 import cgi.game.creations.items.armour.Chest;
 import cgi.game.creations.items.armour.Helm;
 import cgi.game.creations.items.weapon.caster.Scepter;
@@ -24,6 +25,9 @@ public class PlayerClassFactory {
 		player.setMyPlayerClass(intClass);
 		setHelmAndChest(player);
 		player.getInventory().setWeapon(new Wand());
+		player.getInventory().setAmulet(ItemFactory.getRandomAmulet());
+		player.getInventory().setRing(ItemFactory.getRandomRing());
+		player.getInventory().setBelt(ItemFactory.getRandomBelt());
 
 	}
 
@@ -35,6 +39,9 @@ public class PlayerClassFactory {
 		player.setMyPlayerClass(strClass);
 		setHelmAndChest(player);
 		player.getInventory().setWeapon(new Axe());
+		player.getInventory().setAmulet(ItemFactory.getRandomAmulet());
+		player.getInventory().setRing(ItemFactory.getRandomRing());
+		player.getInventory().setBelt(ItemFactory.getRandomBelt());
 
 	}
 
@@ -46,6 +53,9 @@ public class PlayerClassFactory {
 		player.setMyPlayerClass(dexClass);
 		setHelmAndChest(player);
 		player.getInventory().setWeapon(new Bow());
+		player.getInventory().setAmulet(ItemFactory.getRandomAmulet());
+		player.getInventory().setRing(ItemFactory.getRandomRing());
+		player.getInventory().setBelt(ItemFactory.getRandomBelt());
 
 	}
 
@@ -57,6 +67,9 @@ public class PlayerClassFactory {
 		player.setMyPlayerClass(intClass);
 		setHelmAndChest(player);
 		player.getInventory().setWeapon(new Scepter());
+		player.getInventory().setAmulet(ItemFactory.getRandomAmulet());
+		player.getInventory().setRing(ItemFactory.getRandomRing());
+		player.getInventory().setBelt(ItemFactory.getRandomBelt());
 
 	}
 
@@ -68,6 +81,9 @@ public class PlayerClassFactory {
 		player.setMyPlayerClass(dexClass);
 		setHelmAndChest(player);
 		player.getInventory().setWeapon(new Gun());
+		player.getInventory().setAmulet(ItemFactory.getRandomAmulet());
+		player.getInventory().setRing(ItemFactory.getRandomRing());
+		player.getInventory().setBelt(ItemFactory.getRandomBelt());
 
 	}
 
@@ -79,6 +95,9 @@ public class PlayerClassFactory {
 		player.setMyPlayerClass(strClass);
 		setHelmAndChest(player);
 		player.getInventory().setWeapon(new Sword());
+		player.getInventory().setAmulet(ItemFactory.getRandomAmulet());
+		player.getInventory().setRing(ItemFactory.getRandomRing());
+		player.getInventory().setBelt(ItemFactory.getRandomBelt());
 
 	}
 
